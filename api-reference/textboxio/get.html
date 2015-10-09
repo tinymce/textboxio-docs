@@ -1,0 +1,31 @@
+---
+layout: default
+title: get()
+---
+
+<p> Retrieve editor instances using <code>get()</code>. Note that you must pass a <a href="http://www.w3.org/TR/css3-selectors/" class="external-link" rel="nofollow">CSS3 selector</a> identifying original elements that have been replaced by Textbox.io, in the same manner as <code><a href="19760394.html">replace()</a> </code>and <a href="19760392.html"><code>replaceAll()</code></a>. The elements returned by the selector are compared against the active editors, and where an element has been replaced by an editor that editor is returned.</p>
+<h2 id="get()-Example">Example</h2>
+<div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>textboxio.get(selector)</b></div>
+<div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Retrieve all editors whose original elements have the css class &#39;alpha&#39; var editors = textboxio.get( &#39;.alpha&#39; );   // Identify the first editor in the returned array. var editor = editors[0];</pre> </div>
+<h2 id="get()-Parameters">Parameters</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="confluenceTd"><code>selector</code></td>
+            <td colspan="1" class="confluenceTd">String</td>
+            <td class="confluenceTd">Specify a <a href="http://www.w3.org/TR/css3-selectors/" class="external-link" rel="nofollow">CSS3 selector</a> representing the element or elements that contain Textbox.io editors.</td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="get()-Returns">Returns</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="confluenceTd"><code><a href="editor_19760351.html">textboxio.editor</a></code></td>
+            <td colspan="1" class="confluenceTd">Array</td>
+            <td class="confluenceTd">
+                <p>An array of Textbox.io editor instances</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

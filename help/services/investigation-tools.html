@@ -1,0 +1,58 @@
+---
+layout: default
+title: Using Browser Tooling to Investigate Services Issues
+---
+
+<ol>
+    <li>Open your browser's Console/Network tools:
+        <br /><em><strong>Chrome</strong></em>: View menu -&gt; Developer -&gt; JavaScript Console. Click the <em>Network</em> tab (located between <em>Elements</em> and <em>Sources</em>).
+        <br /><em><strong>Firefox:</strong></em> Tools menu -&gt; Web Developer -&gt; Network.
+        <br /><em><strong>Safari:</strong></em> Develop -&gt; Show Error Console. Click the <em>Timelines</em> link between <em>Resources</em> and <em>Debugger</em>.
+        <br /><em><strong>Internet Explorer:</strong></em> Click the cog icon on the top-right side of the browser. Select <em>F12 Developer Tools</em>. Click the <em>Network</em> link (next to the ‘Profiler’ link).</li>
+    <li>Refresh the webpage featuring an Ephox rich-text editor configured with the spelling service. Enter a misspelled word into the editor.</li>
+    <li>Locate the network results that match the following URLs:
+        <br />- <em><a href="http://your_serveryour_port/" class="external-link" rel="nofollow">http://YOUR_SERVER:YOUR_PORT/ephox-spelling/1/</a>autocorrect</em>
+        <br />- <em><a href="http://your_serveryour_port/" class="external-link" rel="nofollow">http://YOUR_SERVER:YOUR_PORT/ephox-spelling/1/correction</a></em></li>
+    <li>If the network response for these services is <em>404</em>, try the following:
+        <br />- Take the service URL displayed as erroneous (example: <em><a href="http://your_serveryour_port/" class="external-link" rel="nofollow">http://YOUR_SERVER:YOUR_PORT/ephox-spelling/1/</a>autocorrect</em>).
+        <br />-  Remove everything from the ‘1’ onwards (including the ‘1’) and replace it with <em>/version</em>. (example: Change <em><a href="http://your_serveryour_port/" class="external-link" rel="nofollow">http://YOUR_SERVER:YOUR_PORT/ephox-spelling/1/correction</a></em> to <em><a href="http://your_server/ephox-spelling/version" class="external-link" rel="nofollow">http://YOUR_SERVER:YOUT_PORT/ephox-spelling/version</a></em>). The response code should be 200 and the body should display the version number.
+        <br />
+    </li>
+    <li>If the response for the version URL is still 404, it means the service has not been started or installed correctly.</li>
+    <li><span class="confluence-anchor-link" id="UsingBrowserToolingtoInvestigateServicesIssues-origin">To check the &quot;Origin&quot; value that the browser uses, open the network tools (chrome in this screenshot) and refresh the page. Then enter a couple of words in the editor and select one of the requests on the bottom left ('correction' in the screen shot) and select the 'Headers' section. Look for the 'Origin' header value. <br /> </span>
+        <br /><img class="confluence-embedded-image" src="/assets/img/20054425.png">
+        <br />
+        <br />
+    </li>
+</ol>
+<div class="aui-message problem shadowed information-macro"> Icon
+    <div class="message-content">
+        <p><strong>The value of the origin header sent by the must match the origin specified in the application.conf server configuration. If it does not match, you must make the server configuration match the browser</strong></p>
+        <div><strong><br /></strong></div>
+    </div>
+</div>
+<h2 id="UsingBrowserToolingtoInvestigateServicesIssues-WindowsServerSpecificIssues:">Windows Server Specific Issues:</h2>
+<p>Sometimes the 'Origin' header is never sent to the services, which results in the editor and services not working as intended. Follow step 6 from above and determine what the 'Origin' is - if you do not see an 'Origin' header at all, please do the following:</p>
+<ol>
+    <li>
+        <p>Try accessing the editor web page using your machine's fully qualified domain name (FQDN) rather than 'localhost'; and keep the network tools open so you can see if the 'Origin' header is sent back to the services.
+            <br />So open a browser window and try (replace the path to match your setup):
+            <br />
+            <br /> </p>
+        <div class="code panel pdl" style="border-width: 1px;">
+            <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>fqdn request</b></div>
+            <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: erl; gutter: false" style="font-size:12px;">http://myhost:myport/textboxio/index.html </pre> </div>
+        </div>
+        <p>
+            <br />
+        </p>
+    </li>
+    <li>If you now see an 'Origin' header being sent across, please alter your application.conf and replace all instances of 'localhost' with the domain name of your machine
+        <br />
+    </li>
+    <li>Restart the Tomcat / Jetty service
+        <br />
+    </li>
+    <li>Reload the browser page and all should work well</li>
+</ol>
+<li>If you are still experiencing problems, please contact <a href="mailto:support@ephox.com" class="external-link" rel="nofollow">Ephox Support</a>.</li>

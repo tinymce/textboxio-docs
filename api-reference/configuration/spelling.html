@@ -1,0 +1,38 @@
+---
+layout: default
+title: spelling
+---
+
+<p>The <code><a href="spelling_19760412.html">spelling</a></code> property defines the location of<a href="Server-Side-Components_19760418.html">&nbsp;Textbox.io server-side spelling service.</a></p>
+<h2 id="spelling-ExampleConfiguration">Example Configuration</h2>
+<p>In this example, a simple <code><a href="configuration_19760396.html">configuration</a></code> object is created that defines the location for the Textbox.io Server Components spelling service for an editor instance. The configuration is used to generate an editor via <code><a href="19760394.html">replace()</a></code>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var config = { spelling : { url : &#39;http://yourspelling.server.com/ephox-spelling/&#39;  } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<h2 id="spelling-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Property</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th colspan="1" class="confluenceTh">Properties</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>url</code></td>
+                <td class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>A URL string that defines the endpoint for the Server-Side Components <a href="http://docs.ephox.com/display/serversidecomponents/Spell+Checking">spelling service</a>.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<p> </p>
+<div class="aui-message hint shadowed information-macro">
+    <p class="title">Services Disabled by Default</p> Icon
+    <div class="message-content">
+        <p>Textbox.io services are not enabled by default. Defining service urls enables those services and their respective client components. For more details, see: <a href="Server-Side-Components_19760418.html">Server-Side Components</a>.</p>
+    </div>
+</div>

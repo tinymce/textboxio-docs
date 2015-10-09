@@ -1,0 +1,203 @@
+---
+layout: default
+title: Spell Checking
+---
+
+<p>Spell checking requires the deployment of several server-side components onto a J2EE compatible application server (e.g. <a href="System-Requirements_19760334.html">Jetty, or Apache Tomcat</a>).  </p>
+<p>The following server-side components are required to enable spell checking:</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Component</th>
+                <th colspan="1" class="confluenceTh">File</th>
+                <th colspan="1" class="confluenceTh">Description</th>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">Allowed Origins</td>
+                <td colspan="1" class="confluenceTd">ephox-allowed-origins.war</td>
+                <td colspan="1" class="confluenceTd">Supplies configuration for server components to communicate with your application.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">Spell Checking</td>
+                <td colspan="1" class="confluenceTd">ephox-spelling.war</td>
+                <td colspan="1" class="confluenceTd">Spell checking service for JavaScript editors.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<p>This guide will help you set up the Spelling server-side components, and show you how to use them in conjunction with editor clients. The steps required are:</p>
+<ol>
+    <li><a href="Spell-Checking_19760451.html">Install a Java application server (or use existing)</a></li>
+    <li><a href="Spell-Checking_19760451.html">Deploy server-side components</a></li>
+    <li><a href="Spell-Checking_19760451.html">Create a configuration file and configure the allowed origins service</a></li>
+    <li><a href="Spell-Checking_19760451.html">Pass the configuration file to the Java&nbsp;application&nbsp;server</a></li>
+    <li><a href="Spell-Checking_19760451.html">Restart the Java application server</a></li>
+    <li><a href="Spell-Checking_19760451.html">Set up editor client instances to use the spelling service</a></li>
+</ol>
+<h2 id="SpellChecking-ins1.InstallaJavaApplicationServer">1. Install a Java Application Server</h2>
+<p>Server-side components require a Java Application Server to run.  </p>
+<p>If you don't already have a Java application server installed you can easily install Tomcat or Jetty with their default settings.  These are both simple, open source Java application servers and they're easy to install and configure.  The editor SDK supports both of these platforms.  You can find the instructions and download links below.  For the later setup, it's also helpful if you note any domain name and port number you specify during installation of the web application server.</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh"><a href="http://www.eclipse.org/jetty/" class="external-link" rel="nofollow">Jetty</a></th>
+                <td colspan="1" class="confluenceTd"><a href="http://download.eclipse.org/jetty/stable-9/dist/" class="external-link" rel="nofollow">download</a> </td>
+                <td class="confluenceTd">
+                    <p><a href="http://www.eclipse.org/jetty/documentation/current/quickstart-running-jetty.html" class="external-link" rel="nofollow">instructions</a></p>
+                </td>
+            </tr>
+            <tr>
+                <th class="confluenceTh"><a href="http://tomcat.apache.org/" class="external-link" rel="nofollow">Tomcat</a></th>
+                <td colspan="1" class="confluenceTd"><a href="http://tomcat.apache.org/download-80.cgi" class="external-link" rel="nofollow">download</a> </td>
+                <td class="confluenceTd"><a href="http://tomcat.apache.org/tomcat-8.0-doc/RUNNING.txt" class="external-link" rel="nofollow">instructions</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="aui-message problem shadowed information-macro">
+    <p class="title">Memory Requirement</p> Icon
+    <div class="message-content">
+        <p>Please ensure that you configure your Java Server (Tomcat/Jetty etc) with a minimum of 4GB.
+            <br />Please refer to the <a href="Out-of-Memory-Errors_19760469.html">Services Troubleshooting</a> page if you require instructions on how to explicitly define how much RAM will be allocated to your Java server.</p>
+    </div>
+</div>
+<h2 id="SpellChecking-dep2.DeployServer-sideComponents">2. Deploy Server-side Components</h2>
+<p>You’ll need to ensure you deploy all of the WAR files packaged with the SDK:</p>
+<ul>
+    <li>ephox-allowed-origins.war</li>
+    <li>ephox-spelling.war</li>
+</ul>
+<p>The easiest way to deploy these files is to simply drag and drop them into the webapps directory of your Tomcat/Jetty server (or equivalent folder of another Java application server), and then restart the server.  </p>
+<p>More information on deploying components/applications:
+    <br /><a href="https://tomcat.apache.org/tomcat-6.0-doc/deployer-howto.html" class="external-link" rel="nofollow">Deploying applications with Tomcat 6.0</a>
+    <br /><a href="https://wiki.eclipse.org/Jetty/Howto/Deploy_Web_Applications" class="external-link" rel="nofollow">Deploying applications with Jetty </a></p>
+<h2 id="SpellChecking-con3.Createaconfigurationfileandconfiguretheallowedoriginsservice">3. Create a configuration file and configure the allowed origins service</h2>
+<div class="aui-message problem shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>It is recommended that you use a plain text editor (eg: gedit, vim, emacs, notepad etc) when creating or editing the application.conf file. Do not use editors like Evernote as there is a good chance of smart quotes being used where plain quotes should be used and this will cause the services to fail.</p>
+        <div>
+            <br />
+        </div>
+    </div>
+</div>
+<p> </p>
+<p>Services requires a configuration file named <code>application.conf</code> to be referenced by the application server.</p>
+<p>The SDK comes packaged with an example configuration file (<code>examples/sample_application.conf</code>) that can be used as a reference guide. You can use this example file (after modifying it with your settings).  We recommend that you make a backup of the file before editing it.</p>
+<p>The allowed-origins configuration element will need to be specified in order for the spelling server-side component to work.</p>
+<h3 id="SpellChecking-allowed-originsallowed-origins"><span class="confluence-anchor-link" id="SpellChecking-allowed-origins">allowed-origins</span> </h3>
+<p>This element configures the allowed-origins service which allows all server-side components to communicate with specified domains.  </p>
+<p>The <code>origins</code> attribute must list all the domains that instances of the editor will be hosted on.  Only requests from the listed origins will be processed by the server-side components. Requests from any other domains will be rejected.</p>
+<p>The <code>url</code> attribute defines the location of the allowed-origins service. </p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">element</th>
+                <td class="confluenceTd"><code>allowed-origins</code></td>
+                <td class="confluenceTd">Stores CORS setup information
+                    <p> </p>
+                </td>
+            </tr>
+            <tr>
+                <th class="confluenceTh">attribute</th>
+                <td class="confluenceTd"><code>origins</code></td>
+                <td class="confluenceTd">
+                    <p>An array of strings representing the domains allowed to communicate with the services.
+                        <br />Note<em>: Be sure to</em> include the protocol (https or http) and any required port number (eg:8080) in the string.</p>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1" class="confluenceTh">attribute</th>
+                <td colspan="1" class="confluenceTd"><code>url</code></td>
+                <td colspan="1" class="confluenceTd">
+                    <p>This string is a concatenation of two values:</p>
+                    <p style="margin-left: 30.0px;">String 1: The URL location of the allowed-origins service
+                        <br />String 2: The API to access in the service (<code>/cors</code>).</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p></p>
+<div class="aui-message problem shadowed information-macro">
+    <p class="title">Entering Origins </p> Icon
+    <div class="message-content">
+        <p>The origins are matched by protocol, hostname and port. So you may need a combination of all three, depending on which browser /s  you use. If you are serving the editor and services from <a href="http://localhost" class="external-link" rel="nofollow">http://localhost</a> &amp; port 80, then the list of origins should have an entry for &quot;<a href="http://localhost/" class="external-link" rel="nofollow">http://localhost</a>&quot; and any other servers with ports, like so:</p>
+        <p> </p><pre><code> ephox{ allowed-origins{ origins=[&quot;http://localhost&quot;, &quot;http://any-other-servers:port&quot;] url = &quot;http://localhost/ephox-allowed-origins/cors&quot; } } </code></pre>
+        <p>This only applies to port 80 because this being the default http port, browsers omit it when talking to the server. For every other port and hostname, the recommended setting is to make one entry with the port and one without the port. This is because different browsers behave differently with regards to the Origin header. So the config file should resemble:</p><pre><code><br /> ephox{ allowed-origins{ origins=[&quot;http://hostname&quot;, &quot;http://hostname:1234&quot;] url = &quot;http://hostname:1234/ephox-allowed-origins/cors&quot; } }</code></pre>
+        <p>
+            <br />Ensure that you have the right protocol specified, and for more examples see the section below. If you experience issues, please use the Troubleshooting guide (in the Tip below) and you should be able to see if the browser sends a different origin to the one that you have specified. Both must match for the services to work.</p>
+    </div>
+</div>
+<div class="aui-message success shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>Depending on your configuration and the browser you use, you may need to specify the port number as well when listing the origin. If you observe that requests are failing with services not being available, it may be because the port number is required. Refer to troubleshooting guide - section titled <a href="Using-Browser-Tooling-to-Investigate-Services-Issues_19760463.html">Investigating Using the Browser's Network Tools</a></p>
+    </div>
+</div>
+<h3 id="SpellChecking-Example">Example</h3>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>allowed-origins Example</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: erl; gutter: false" style="font-size:12px;">ephox { allowed-origins { origins = [ &quot;http://myserver&quot;, &quot;http://myserver:8080&quot;, &quot;http://myotherserver&quot;, &quot;http://myotherserver:9090&quot;, &quot;https://mysecureserver&quot; ] url = &quot;http://myserver:8080/ephox-allowed-origins/cors&quot; } }</pre> </div>
+</div>
+<h2 id="SpellChecking-pas4.PasstheconfigurationfiletotheJavaapplicationserver">4. Pass the configuration file to the Java application server</h2>
+<p>You’ll need to reference the configuration file created in <a href="Spell-Checking_19760451.html">Step 3</a> as a parameter passed to the JVM running the services. Once the server has been configured to use the file, restart the server.</p>
+<div class="aui-message warning shadowed information-macro">
+    <p class="title">Note</p> Icon
+    <div class="message-content">
+        <p>If the path to your <em>application.conf</em> file has spaces in it, you must ensure you prefix each white space with an escape character (\).</p>
+        <p><em><strong>Example:</strong></em> &quot; -Dconfig.file=/config/file/location/with/white\ space/application.conf&quot;</p>
+    </div>
+</div>
+<p>The following examples demonstrate how to reference <code>application.conf</code> for Tomcat or Jetty instances.</p>
+<ul>
+    <li><a href="Spell-Checking_19760451.html">Tomcat (Unix)</a></li>
+    <li><a href="Spell-Checking_19760451.html">Tomcat (Windows)</a></li>
+    <li><a href="Spell-Checking_19760451.html">Jetty (simple configuration)</a></li>
+    <li><a href="Spell-Checking_19760451.html">Jetty (automatic configuration for services launching on system start-up)</a></li>
+</ul>
+<h2 id="SpellChecking-tuTomcat(Unix)">Tomcat (Unix)</h2>
+<p>Make/edit a script at <code>/tomcat/install/directory/bin/setenv.sh <br /></code></p>
+<p>Ensure the file contains a single line, like (this must be the absolute path as before):</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Example setenv.sh</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">CATALINA_OPTS=&quot; -Dconfig.file=/config/file/location/application.conf&quot;</pre> </div>
+</div>
+<h3 id="SpellChecking-twTomcat(Windows):">Tomcat (Windows):</h3>
+<p>Make/edit a script at <code>DRIVE:\tomcat\install\directory\bin\setenv.bat </code></p>
+<p>The file should contain a single line:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Example setenv.bat</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">set CATALINA_OPTS= -Dconfig.file=DRIVE:\config\file\location\application.conf</pre> </div>
+</div>
+<h3 id="SpellChecking-jsJetty(simpleconfiguration):">Jetty (simple configuration):</h3>
+<p>You can specify your <code>application.conf</code>  as a parameter to this command, along with other jvm parameters:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Jetty</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">java -jar /jetty/install/directory/start.jar -Dconfig.file=&quot;/config/file/location/application.conf&quot; </pre> </div>
+</div>
+<h3 id="SpellChecking-jaJetty(automaticconfigurationforserviceslaunchingonsystemstart-up)">Jetty (automatic configuration for services launching on system start-up)</h3>
+<p>Edit /etc/default/jetty and add the line:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">JETTY_OPTS=&quot; -Dconfig.file=/config/file/location/application.conf&quot;</pre> </div>
+</div>
+<p>Edit /opt/jetty/start.ini and add the line:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">&quot; -Dconfig.file=/config/file/location/application.conf&quot;</pre> </div>
+</div>
+<p>The first new lines of the file should read:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">#=========================================================== # Jetty start.jar arguments # Each line of this file is prepended to the command line # arguments # of a call to: # java -jar start.jar [arg...] #=========================================================== &quot; -Dconfig.file=/config/file/location/application.conf&quot;</pre> </div>
+</div>
+<h2 id="SpellChecking-res5.RestarttheJavaapplicationserver">5. Restart the Java application server</h2>
+<p>Once you have created a configuration file, configured the allowed origins service, and passed the configuration file to the Java application server you must restart the Java application server.</p>
+<h2 id="SpellChecking-cli6.Setupeditorclientinstancestousethespellingservice">6. Set up editor client instances to use the spelling service</h2>
+<p>With the above steps completed you can now direct the editor client instances to use the server-side spelling component.</p>
+<p>Set the <code><a href="spelling_19760412.html">spelling.url</a></code> configuration property to the URL of the deployed server side spelling component. This URL is provided to you by your Java application server.</p>
+<h3 id="SpellChecking-Example.1">Example</h3>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Textbox.io Client Config</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var config = { spelling : {  url: &#39;http://yourspelling.server.com/ephox-spelling/&#39; // Spelling service URL } }; var editor = textboxio.replace(&#39;#id&#39;, config);</pre> </div>
+</div>

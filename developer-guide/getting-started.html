@@ -1,0 +1,79 @@
+---
+layout: default
+title: Getting Started
+---
+
+<div class="contentLayout2">
+    <div class="columnLayout single" data-layout="single">
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <p>Getting started with Textbox.io is super easy. In this guide you will invoke Textbox.io on a <code>&lt;textarea&gt;</code> as part of an HTML <code>&lt;form&gt;</code>.  When the <span><code>&lt;form&gt;</code> is submitted, the contents of the Textbox.io editor will be submitted as part of the <code>&lt;form&gt;</code> POST.<span>  </span> </span>
+                </p>
+                <p>To complete this guide, you will need access to a web server. This guide assumes a web server is running on port 80 on localhost. </p>
+                <div class="aui-message hint shadowed information-macro"> Icon
+                    <div class="message-content">
+                        <p>These instructions refer to the downloadable SDK for Textbox.io. If you are using the <a href="https://accounts.textbox.io" class="external-link" rel="nofollow">Cloud offering of Textbox.io</a>, you'll need to follow the alternative steps in the <a href="19760348.html">Getting Started (Cloud Deployment)</a> article.</p>
+                    </div>
+                </div>
+                <p>
+                    <br />
+                </p>
+                <h2 id="GettingStarted-Step1:DownloadaCopyofTextbox.ioandPutitonaWebServer">Step 1: Download a Copy of Textbox.io and Put it on a Web Server</h2>
+                <ul>
+                    <li>Download a copy of the Textbox.io SDK from <a href="http://ephox.com/download#release-tab" class="external-link" rel="nofollow">Ephox Downloads</a>.</li>
+                    <li>Unzip the package and move the textboxio directory into a web accessible location on your web server (for example, localhost). </li>
+                </ul>
+                <p>Once you've completed these tasks, open a browser and browse to the directory where you placed the textboxio directory (for example, <a href="http://localhost/textboxio/" style="line-height: 1.4285715;" class="external-link" rel="nofollow">http://localhost/textboxio/</a>).  If the Textbox.io welcome screen appears with an instance of Textbox.io, you've installed the editor correctly and you're ready for Step 2.</p>
+                <p><img class="confluence-embedded-image confluence-content-image-border image-center" height="278" width="500" src="/assets/img/20054357.png"></p>
+                <h2 id="GettingStarted-Step2:AddTextbox.iotoaPage">Step 2: Add Textbox.io to a Page</h2>
+                <p>With Textbox.io accessible via your web server (<a href="http://localhost/textboxio/" class="external-link" rel="nofollow">http://localhost/textboxio/</a>), you can now include the Textbox.io script anywhere you would like to use the Textbox.io editor. </p>
+                <p>To add the script,  add the following inside your page’s &lt;head&gt; tag. </p>
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: xml; gutter: false" style="font-size:12px;">&lt;script src=&quot;http://YOUR-DOMAIN/YOUR-DIRECTORY/textboxio/textboxio.js&quot;&gt;&lt;/script&gt;</pre> </div>
+                </div>
+                <h2 id="GettingStarted-invoke-textboxioStep3:InvokeTextbox.ioasPartofaWebForm">Step 3: Invoke Textbox.io as Part of a Web Form</h2>
+                <p>With the script included, you may then invoke Textbox.io on any element (or elements) in your webpage. </p>
+                <p>Textbox.io lets you identify elements to <em>replace</em> via a <a href="http://www.w3.org/TR/css3-selectors/" style="line-height: 1.4285715;" class="external-link" rel="nofollow">CSS3 selector</a>. To add Textbox.io to a page you pass a selector to <code>textboxio.replace()</code>.</p>
+                <p>In this example, you will <em>replace</em> <code>&lt;textarea id=&quot;mytextarea&quot;&gt;&lt;/textarea&gt;</code> with a Textbox.io editor by passing the selector '#mytextarea' to <code style="line-height: 1.4285715;">textboxio.replace()</code>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout single" data-layout="single">
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: xml; gutter: false" style="font-size:12px;">&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;script src=&quot;http://localhost/textboxio/textboxio.js&quot;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Textbox.io Getting Started Guide&lt;/h1&gt; &lt;form&gt; &lt;textarea id=&quot;mytextarea&quot;&gt;&lt;/textarea&gt; &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt; &lt;/form&gt; &lt;script type=&quot;text/javascript&quot;&gt; var editor = textboxio.replace(&#39;#mytextarea&#39;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt;</pre> </div>
+                </div>
+                <div class="aui-message hint shadowed information-macro"> Icon
+                    <div class="message-content">
+                        <p>For the best user experience, it is recommended that the HTML5 doc type is set.</p><pre>&lt;!DOCTYPE html&gt;</pre> </div>
+                </div>
+                <h3 id="GettingStarted-Tryit:">Try it:</h3>
+                <iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/49TZa/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+                <p>You’ve added <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> to the page - that's all there is to it!</p>
+                <p>Next, we'll look at retrieving content as part of a &lt;form&gt; POST.</p>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout single" data-layout="single">
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <h2 id="GettingStarted-savecontent-textboxioStep4:SavingContentwitha&lt;form&gt;POST">Step 4: Saving Content with a &lt;form&gt; POST</h2>
+                <p>When the form is submitted, the <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> editor mimics the behavior of a normal HTML <code>&lt;textarea&gt;</code> during a form POST. No additional configuration is required.</p>
+                <p>
+                    <br />
+                </p>
+                <hr />
+                <h2 id="GettingStarted-What&#39;sNext">What's Next</h2>
+                <p>At this point, you've seen how to create <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> instances on a page using <code>textboxio.replace()</code>, and you've seen how to retrieve content from <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> as part of an HTML <code>&lt;form&gt;</code> POST. There's way more under the hood if you're feeling adventurous: read on for more <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> goodness:</p>
+                <ul>
+                    <li><a href="Editor-types---Classic-vs-Inline_19760333.html">Editor types - Classic vs Inline</a> - Learn about the 2 modes of editing supported by <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a>, and decide which works best for you</li>
+                    <li><a href="API-Basics_19760328.html">API Basics</a> - Learn the basics of using the editor API, such as getting and setting content in the editor.</li>
+                    <li><a href="Customizing-the-Editor_19760336.html">Customizing the Editor</a> - Learn how to configure and customize Textbox.io for your applications.</li>
+                    <li><a href="Handling-Local-Images_19760344.html">Handling Local Images</a> - Learn how to configure automatic local image uploads</li>
+                    <li><a href="API-reference_19760350.html">API reference</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

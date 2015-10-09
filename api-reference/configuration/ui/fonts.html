@@ -1,0 +1,38 @@
+---
+layout: default
+title: fonts
+---
+
+<p>The <code><a href="configuration_19760396.html">u</a><a href="ui_19760403.html">i</a> </code>fonts property defines the list of available fonts from the fonts dropdown menu.</p>
+<p>The fonts property accepts an array of strings that define font-face values. These font-face values are then seen in the editor font menu. Note that font-face values may contain font fallbacks if you so choose.</p>
+<p>For more advanced use cases, the fonts property can also accept an array of objects. Each object should contain a value and text property. The value property defines the font-face value, while the text property defines the visible label given to the font-face value in the editor font menu.</p>
+<h2 id="fonts-SimpleExample">Simple Example</h2>
+<p>If strings are provided to the fonts array, the editor will use these values to construct available font-face values in the font menu. Note that these strings will be displayed in the font menu UI unchanged.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Easy configuration</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Create a simple font menu configuration with some single font choices and a font fallback var configUi = { ui : { fonts : [ &#39;Helvetica&#39;, &#39;Arial&#39;, &#39;Times New Roman&#39;, &#39;&quot;Comic Sans MS&quot;, cursive, sans-serif&#39; ] } }; var editor = textboxio.replace(&#39;#targetId&#39;, configUi);</pre> </div>
+</div>
+<h2 id="fonts-AdvancedExample">Advanced Example</h2>
+<p>If objects are provided to the fonts array that define a value and text, the editor will use the value property to define the CSS font-face to apply while displaying the font menu item in the UI with the text provided. This allows you to customize the display names of fonts available in the font menu.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Full configuration</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var configUi = { ui : { fonts : [ { value: &#39;&quot;Comic Sans MS&quot;, cursive, sans-serif&#39;, text: &#39;A silly font&#39; }, { value: &#39;Tahoma&#39; // equivalent to providing just a string }, &#39;Arial&#39;, // you can use a mixture of objects and strings { value: &#39;Helvetica&#39;, text: &#39;A nicer font&#39; } ] } };   var editor = textboxio.replace(&#39;#targetId&#39;, configUi);</pre> </div>
+</div>
+<h2 id="fonts-AdvancedObjectProperties">Advanced Object Properties</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="confluenceTd"><code>value</code></td>
+            <td class="confluenceTd">String</td>
+            <td colspan="1" class="confluenceTd">The font name</td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd"><pre>text</pre></td>
+            <td colspan="1" class="confluenceTd">String</td>
+            <td colspan="1" class="confluenceTd">
+                <p>Optional display name for the font.</p>
+                <p>When not provided, the value is used as the text.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

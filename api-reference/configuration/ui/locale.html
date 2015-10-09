@@ -1,0 +1,237 @@
+---
+layout: default
+title: locale
+---
+
+
+<p>The locale attribute lets a developer choose a language UI translation from one of the <a href="locale_19760407.html">33 available languages</a> by specifying its locale string.</p>
+<p>By default, the editor language is automatically set according to the client browser's language. The locale property allows the developer to specify an editor UI translation directly, overriding the browser's default language.</p>
+<h2 id="locale-ExampleConfiguration">Example Configuration</h2>
+<p>In this example, a simple <code><a href="configuration_19760396.html">configuration</a></code> object is created that defines the locale for the editor UI for the <code><a href="editor_19760351.html">editor</a></code> created by<code> </code><code><a href="19760394.html">replace()</a></code>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var config = { ui : { locale : &#39;fr&#39; //sets the editor language to french } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<h2 id="locale-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Property</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th colspan="1" class="confluenceTh">Properties</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">locale</td>
+                <td class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">locale short code: e.g <code>en</code> for English</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="locale-supported_localeSupportedLocales">Supported Locales</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <th class="confluenceTh">Language</th>
+            <th class="confluenceTh">Locale String</th>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Arabic</p>
+            </td>
+            <td class="confluenceTd"><code>ar</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Catalan</p>
+            </td>
+            <td class="confluenceTd"><code>ca</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Chinese (Simplified)</p>
+            </td>
+            <td class="confluenceTd"><code>zh</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Chinese (Traditional)</p>
+            </td>
+            <td class="confluenceTd"><code>zh_tw</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Croatian</p>
+            </td>
+            <td class="confluenceTd"><code>hr</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Czech</p>
+            </td>
+            <td class="confluenceTd"><code>cs</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Danish</p>
+            </td>
+            <td class="confluenceTd"><code>da</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Dutch</p>
+            </td>
+            <td class="confluenceTd"><code>nl</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>English</p>
+            </td>
+            <td class="confluenceTd"><code>en</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Farsi</p>
+            </td>
+            <td class="confluenceTd"><code>fa</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Finnish</p>
+            </td>
+            <td class="confluenceTd"><code>fi</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>French (Europe)</p>
+            </td>
+            <td class="confluenceTd"><code>fr</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>German</p>
+            </td>
+            <td class="confluenceTd"><code>de</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Greek</p>
+            </td>
+            <td class="confluenceTd"><code>el</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Hebrew</p>
+            </td>
+            <td class="confluenceTd"><code>he</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Hungarian</p>
+            </td>
+            <td class="confluenceTd"><code>hu</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Italian</p>
+            </td>
+            <td class="confluenceTd"><code>it</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Japanese</p>
+            </td>
+            <td class="confluenceTd"><code>ja</code></td>
+        </tr>
+        <tr>
+            <td class="confluenceTd">
+                <p>Kazakh</p>
+            </td>
+            <td class="confluenceTd"><code>kk</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Korean</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>ko</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Norwegian</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>no</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Polish</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>pl</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Portuguese (Brazil)</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>pt_br</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Portuguese (Europe)</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>pt_pt</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Romanian</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>ro</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Russian</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>ru</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Slovak</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>sk</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Slovenian</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>sl</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Spanish</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>es</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Swedish</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>sv</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Turkish</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>tr</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Thai</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>th</code></td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd">
+                <p>Ukrainian</p>
+            </td>
+            <td colspan="1" class="confluenceTd"><code>uk</code></td>
+        </tr>
+    </tbody>
+</table>

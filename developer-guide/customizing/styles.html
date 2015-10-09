@@ -1,0 +1,67 @@
+---
+layout: default
+title: Using your own styles
+---
+
+<p> As a developer, Textbox.io enables you to take fine-grained control over the way content is presented, as well as the styles that users are able to select from the styles dropdown menu.</p>
+<h2 id="Usingyourownstyles-InjectingyourownCSSfiles">Injecting your own CSS files</h2>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>In <a href="Editor-types---Classic-vs-Inline_19760333.html">Classic Editing Mode</a>, the textbox.io editor document is contained within an <code>iframe</code> element. This means that any styles or stylesheets declared on your <strong>host</strong> page <strong>are not</strong> inherited by the editor. These need to be explicitly declared as references in the editor configuration.</p>
+    </div>
+</div>
+<p>CSS and styles are configured per-instance as part of the Textbox.io <a href="Configuration-Object_19760342.html">configuration object</a> </p>
+<p>You can declare your own stylesheets using the <code><a href="stylesheets_19760401.html">stylesheets</a></code> property or inject CSS directly using the <code><a href="documentStyles_19760400.html">documentStyles</a></code> property:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var configCSS = { css : { stylesheets : [&#39;http://www.example.com/mycss.css&#39;, &#39;anotherfile.css&#39;], // an array of CSS file URLs documentStyles : &#39;body { background:red; }&#39; // a string of CSS } };</pre> </div>
+</div>
+<h2 id="Usingyourownstyles-Example:customCSS">Example: custom CSS</h2>
+<p>The example below shows the editor using a highly customized CSS file:</p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/dpxu7s5c/embedded/result,html,js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h2 id="Usingyourownstyles-Customizingthestylesdrop-downmenu">Customizing the styles drop-down menu</h2>
+<p>The items shown in Textbox.io's styles drop-down menu can be customized to suit the requirements of your application. Built-in styles may be added or removed, and custom styles may be defined per-editor using the <a href="Configuration-Object_19760342.html">the editor configuration object</a>. </p>
+<p style="text-align: center;"><img class="confluence-embedded-image" src="/assets/img/20054365.png"></p>
+<p style="text-align: center;"><em>The Textbox.io styles drop-down menu</em></p>
+<h3 id="Usingyourownstyles-Overview:Blockvs.Inlinestyles">Overview: Block vs. Inline styles</h3>
+<p>Before attempting to create your own custom styles, it is worthwhile understanding the difference between <em>block style transformations</em>, and <em>inline transformations.</em></p>
+<ul>
+    <li>When a <strong>block transformation</strong> is applied to a selection, the entire block encasing the selection (such as a paragraph or heading) is transformed: </li>
+</ul>
+<p><em><img  class="confluence-embedded-image image-center" width="600"  src="/assets/img/20054369.png"></em></p>
+<ul>
+    <li>When an <strong>inline transformation </strong>is applied, to a selection, only the selection itself (and no surrounding content) is transformed:
+        <br /><img class="confluence-embedded-image image-center" width="600" src="/assets/img/20054368.png"></li>
+</ul>
+<p> </p>
+<p>In its stock configuration, the drop-down styles menu contains <strong>only block style transformations</strong> - inline style changes can be made via the font drop-down menu:</p>
+<h3 id="Usingyourownstyles-Stylesdrop-downconfiguration">Styles drop-down configuration</h3>
+<p>The styles shown in an editor can be specified in the editor configuration object:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var configCSS = { css : { stylesheets : [&#39;customstyles.css&#39;], // an array of CSS URLs (absolute or relative to the location of textboxio.js) styles: [ { rule: &#39;h1.green&#39;, // the transform to apply to the selection. // This will convert a selection&#39;s container // to &lt;h1 class=&quot;green&quot;&gt;text&lt;/h1&gt; // Note: for the transformation to be visible, a style declaration for // h1.green must be made in customstyles.css (or one of the custom stylesheets) // eg: h1.green{ color: green; font-size: 2em;} text: &#39;Green heading&#39;, // Text to show in the dropdown } ] } };</pre> </div>
+</div>
+<h4 id="Usingyourownstyles-Specifyingcustominlinestyles">Specifying custom inline styles</h4>
+<p>In the configuration example shown above, we specified a rule for <code>h1.green</code> .This is an example of a <em>custom block</em> <em>style.</em> Similarly, if we'd have defined <code>h2.green</code>, <code>h3.green</code>, or <code>p.green</code>, this transformation would take place at a block level. If we want to make green an inline style, we simply remove the prefixing element from the definition:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var configCSS = { css : { stylesheets : [&#39;customstyles.css&#39;], // an array of CSS URLs (absolute or relative to the location of textboxio.js) styles: [ { rule: &#39;.green&#39;, // inline example. Will apply to just the selection: // eg. If i had the text: // &lt;p&gt;The [sel]quick brown[/sel] fox jumped over the lazy dog&lt;/p&gt; // With selection marked by [sel] and [/sel] respectively, // then the transformation after selecting this from the dropdown would be: // &lt;p&gt;The &lt;span class=&quot;green&quot;&gt;quick brown&lt;/span&gt; fox jumped over the lazy dog&lt;/p&gt; text: &#39;Green heading&#39;, // Text to show in the dropdown } ] } };</pre> </div>
+</div>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>For more details on how rule definitions affect selected HTML, see: <a href="styles_19760399.html">styles</a>.</p>
+    </div>
+</div>
+<h3 id="Usingyourownstyles-Example">Example</h3>
+<p>The following is an example of custom styles:</p>
+<ul>
+    <li><em>&quot;distinguished&quot; </em>is an example of an <em>inline style</em></li>
+    <li><em>&quot;fancy title&quot; </em>is an example of a block style</li>
+</ul>
+<p>
+    <br /> Note the differences in the presentation of these styles in the drop-down menu declaration compared to the <a href="http://static.ephox.com/jsfiddle/examples/css/customstyles.css" class="external-link" rel="nofollow">CSS declaration file</a>.</p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/textboxio/4y98k8ny/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h3 id="Usingyourownstyles-Specialcases:Tablecells&amp;ListItems">Special cases: Table cells &amp; List Items</h3>
+<p>The list of items shown on the styles drop-down menu are dependent on the current editor selection. Custom block styles declared for table cells or list items will only become visible when the editor selection exists on those elements as these styles are only valid CSS within a table or list structure.  In this way Textbox.io prevents users from creating invalid HTML.</p>
+<p> </p>
+<p><img class="confluence-embedded-image confluence-thumbnail image-center" width="300" src="/assets/img/20054366.png"></p>
+<p style="text-align: center;"><em>Custom styles for table cells will only appear when the selection is on a table</em></p>

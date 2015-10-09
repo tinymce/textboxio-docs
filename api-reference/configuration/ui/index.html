@@ -1,0 +1,66 @@
+---
+layout: default
+title: ui
+---
+
+
+<p>The <code><a href="configuration_19760396.html">configuration</a> <a href="ui_19760403.html">ui</a></code> property defines options related to the editor UI, and allows for the configuration of the <code><a href="editor_19760351.html">editor</a></code> toolbar.</p>
+<h2 id="ui-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre><a href="aria-label_19760410.html">aria-label</a></pre></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">Text to use for the editor's ARIA label instead of the default</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre><a href="languages_19760409.html">languages</a></pre></td>
+                <td colspan="1" class="confluenceTd">Array</td>
+                <td colspan="1" class="confluenceTd">Specifies available language codes that can be applied to content for internationalization (<a class="external-link" href="http://www.w3.org/TR/html401/struct/dirlang.html#h-8.1" rel="nofollow">HTML <code>lang</code> attribute</a>)</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre><a href="locale_19760407.html">locale</a></pre></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">Specifies editor UI language</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre><a href="fonts_19760408.html">fonts</a></pre></td>
+                <td colspan="1" class="confluenceTd">Array</td>
+                <td colspan="1" class="confluenceTd">Specifies the list of fonts available to the editor</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre><a href="shortcuts_19760411.html">shortcuts</a></pre></td>
+                <td colspan="1" class="confluenceTd">Boolean</td>
+                <td colspan="1" class="confluenceTd">Whether to enable content keyboard shortcuts</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="toolbar_19760404.html">toolbar</a><br /></code></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd">An object representing the desired toolbar functionality for an <code><a href="editor_19760351.html">editor</a></code>.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="ui-Details">Details</h2>
+<h3 id="ui-toolbar">toolbar</h3>
+<p>For toolbar defaults and other configuration options, see the <a href="toolbar_19760404.html">toolbar documentation page</a>.</p>
+<h3 id="ui-aria-label">aria-label</h3>
+<p>The default ARIA label is based on the ID attribute of the element that textbox.io replaced. If the element does not have an ID attribute, a 6 digit string is generated based on the current time.</p>
+<p>The default label is &quot;<code>Textbox.io Rich Text Editor - &lt;id&gt;</code>&quot; where <code>&lt;id&gt;</code> is the ID attribute value (or generated string). This string is translated into all supported languages.</p>
+<p>If a string is provided for this setting, it will be used verbatim with no translation or other change applied to it.</p>
+<h3 id="ui-shortcuts">shortcuts</h3>
+<p>This property is true by default. When set to false, all keyboard shortcuts that alter content formatting will be disabled. The following shortcuts are not affected by this:</p>
+<ul>
+    <li>undo</li>
+    <li>redo</li>
+    <li>help</li>
+    <li>fullscreen</li>
+    <li>focus toolbar</li>
+    <li>open context menu</li>
+</ul>
+<div class="aui-message warning shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>Use of this property does not alter the toolbar, it just deactivates the keyboard shortcuts.</p>
+    </div>
+</div>

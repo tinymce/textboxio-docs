@@ -1,0 +1,30 @@
+---
+layout: default
+title: editor.content.insertHtmlAtCursor()
+---
+
+<p> Insert HTML content at the cursor position with <code>editor.content.insertHtmlAtCursor()</code>. </p>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>Content is inserted at the last known cursor position, regardless of whether the editor has focus.</p>
+    </div>
+</div>
+<h2 id="editor.content.insertHtmlAtCursor()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.content.insertHtmlAtCursor(html)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Insert a string of HTML at the cursor position var newContent =&quot;&lt;p&gt;Any HTML Content&lt;/p&gt;&quot;; editor.content.insertHtmlAtCursor(newContent);</pre> </div>
+</div>
+<h2 id="editor.content.insertHtmlAtCursor()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>html</code></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td class="confluenceTd">A string of HTML that will be inserted at the last known cursor position.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>No return value.</p>
+<h2 id="editor.content.insertHtmlAtCursor()-Returns">Returns</h2>

@@ -1,0 +1,286 @@
+---
+layout: default
+title: toolbar
+---
+
+<div class="contentLayout2">
+    <div class="columnLayout single" data-layout="single">
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <p>The<code style="line-height: 1.4285715;"> <a href="ui_19760403.html">ui</a> <a href="toolbar_19760404.html">toolbar</a></code> property defines options related to editor toolbar commands, groups and child menus.</p>
+                <h2 id="toolbar-Contexttoolbaritems">Context toolbar items</h2>
+                <p>These items currently appear at the end of the toolbar. Specific configuration is not available as they may move in a future release. They can however be disabled.</p>
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var toolbar = { contextual: [ ] }; var config = { ui : { toolbar : customToolbar } }; var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+                </div>
+                <p> </p>
+                <h2 id="toolbar-ExampleConfiguration">Example Configuration</h2>
+                <p>In this example, a custom toolbar object is created and added to a <code><a href="configuration_19760396.html">configuration</a></code> object via the <code><a href="ui_19760403.html">ui</a></code> toolbar property. This config is then used to create an  <code style="line-height: 1.4285715;"><a href="editor_19760351.html">editor</a></code> by<code style="line-height: 1.4285715;"> </code><code style="line-height: 1.4285715;"><a href="19760394.html">replace()</a></code>.</p>
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var customToolbar = { items : [ { label: &#39;Undo and Redo group&#39;, items: [ &#39;undo&#39;, &#39;redo&#39; ] }, { label: &#39;Insert group&#39;, items: [ { id : &#39;insert&#39;, label : &#39;Insert Menu&#39;, items : [ &#39;link&#39;, &#39;fileupload&#39;, &#39;table&#39; ] } ] }, { label: &#39;Custom Toolbar Group&#39;, items: [ { id : &#39;custom1&#39;, text : &#39;Custom Button 1&#39;, icon : &#39;/path/to/icon1.png&#39;, action : function () { alert(&#39;Custom Button 1 Clicked&#39;); } }, { id : &#39;custom2&#39;, text : &#39;Custom Button 2&#39;, icon : &#39;/path/to/icon2.png&#39;, action : function () { alert(&#39;Custom Button 2 Clicked&#39;); } } ] } ] }; var config = { ui : { toolbar : customToolbar } }; var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout single" data-layout="single">
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <h2 id="toolbar-Properties">Properties</h2>
+                <div class="table-wrap">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td colspan="1" class="confluenceTd"><strong>Item</strong></td>
+                                <td colspan="1" class="confluenceTd"><strong>Properties</strong></td>
+                                <td colspan="1" class="confluenceTd"><strong>Default</strong></td>
+                                <td colspan="1" class="confluenceTd"><strong>Description</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="confluenceTd"><code>items</code></td>
+                                <td class="confluenceTd">Array</td>
+                                <td colspan="1" class="confluenceTd">(Default Toolbar)</td>
+                                <td colspan="1" class="confluenceTd">An array representing the structure of the <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> toolbar and menu system. Each item represents a toolbar group.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" class="confluenceTd"><pre>contextual</pre></td>
+                                <td colspan="1" class="confluenceTd">Array</td>
+                                <td colspan="1" class="confluenceTd"><pre>[ 'table-tools' ]</pre></td>
+                                <td colspan="1" class="confluenceTd">An array listing the items that can appear depending on the selection context</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" class="confluenceTd"><code>visible<br /><br /><a href="http://jsfiddle.net/textboxio/zo2y0wse/3/light/" class="external-link" rel="nofollow">(demo) </a></code></td>
+                                <td colspan="1" class="confluenceTd">Boolean </td>
+                                <td colspan="1" class="confluenceTd">true</td>
+                                <td colspan="1" class="confluenceTd"><strong><em>Inline editing only. </em></strong>Whether the toolbar should be visible in the UI at all.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" class="confluenceTd">
+                                    <p><code>draggable</code></p>
+                                    <p><a href="http://jsfiddle.net/textboxio/n3et4nex/1/light/" class="external-link" rel="nofollow">(demo)</a></p>
+                                </td>
+                                <td colspan="1" class="confluenceTd">Boolean</td>
+                                <td colspan="1" class="confluenceTd">true</td>
+                                <td colspan="1" class="confluenceTd">
+                                    <p><em><strong>Inline editing only.</strong></em> Whether the editor should be draggable from its offset position.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" class="confluenceTd">
+                                    <p><code>offset</code></p><pre>↳ top</pre><pre>↳ left</pre>
+                                    <p> </p>
+                                    <p><a href="http://jsfiddle.net/textboxio/mh7zw72c/1/light/" class="external-link" rel="nofollow">(demo)</a></p>
+                                </td>
+                                <td colspan="1" class="confluenceTd">Position</td>
+                                <td colspan="1" class="confluenceTd">top: 0, left: 0</td>
+                                <td colspan="1" class="confluenceTd">
+                                    <p><em><strong>Inline editing only.</strong> </em>The offset coordinates of the toolbar from the top-left vertex of the container being edited.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h2 id="toolbar-Items">Items </h2>
+                <p>Toolbars are made up of item objects. Items represent either editor <em>commands</em> (apply bold), toolbar <em>groups</em>, or <em>menus.</em> </p>
+                <p>Items infer their UI from their position in an the items array. An item placed inside a menu will be rendered as a menu item, while an item placed inside a toolbar group will be rendered as a button. Similarly, a menu item placed within a menu will result in a sub-menu.</p>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout single" data-layout="single">
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <h3 id="toolbar-ItemTypes">Item Types</h3>
+                <p>Items have 3 distinct types, representing ui constructs in a Textbox.io editor. <code>command</code> items represent discrete editor functionality. <code>menu</code> items represent a nested group of commands invoked from a root UI element.   <code>group</code> items represent logical groupings of <code>commands</code> either inside the toolbar or within menus.</p>
+                <div class="table-wrap">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th colspan="1" class="confluenceTh">Item</th>
+                                <th colspan="1" class="confluenceTh">Properties</th>
+                                <th colspan="1" class="confluenceTh">Description</th>
+                            </tr>
+                            <tr>
+                                <td class="confluenceTd"><code>command</code></td>
+                                <td class="confluenceTd">
+                                    <div class="table-wrap">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="confluenceTd"><code>id</code></td>
+                                                    <td class="confluenceTd">String</td>
+                                                    <td class="confluenceTd">Id string for the command.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="confluenceTd"><code>text</code></td>
+                                                    <td class="confluenceTd">String</td>
+                                                    <td class="confluenceTd">(Optional) Friendly name of the command, shown in tooltips.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="1" class="confluenceTd"><code>icon</code></td>
+                                                    <td colspan="1" class="confluenceTd">String</td>
+                                                    <td colspan="1" class="confluenceTd">Path to the icon used to represent the command.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="1" class="confluenceTd"><code>action</code></td>
+                                                    <td colspan="1" class="confluenceTd">Function</td>
+                                                    <td colspan="1" class="confluenceTd">A function to be executed when the command is invoked via user action.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="1" class="confluenceTd">
+                                    <p>Command type items represent discrete editor commands, such as: apply bold, insert link, etc.</p>
+                                    <p>Note that built-in command items are referenced by their string id rather than specified as objects.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="confluenceTd"><code>menu</code></td>
+                                <td class="confluenceTd">
+                                    <div class="table-wrap">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="1" class="confluenceTd"><code>id</code></td>
+                                                    <td colspan="1" class="confluenceTd">String</td>
+                                                    <td colspan="1" class="confluenceTd">Id string for the menu.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="confluenceTd">label</td>
+                                                    <td class="confluenceTd">String</td>
+                                                    <td class="confluenceTd">(Optional) Friendly name of the menu, visible to assistive devices per<a href="http://www.w3.org/WAI/intro/aria" class="external-link" rel="nofollow"> WAI-ARIA</a>.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="1" class="confluenceTd"><code>icon</code></td>
+                                                    <td colspan="1" class="confluenceTd">String</td>
+                                                    <td colspan="1" class="confluenceTd">Path to the icon used to represent the command.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="confluenceTd"><code>items</code></td>
+                                                    <td class="confluenceTd">Array</td>
+                                                    <td class="confluenceTd">Array of command or menu items.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="1" class="confluenceTd">
+                                    <p>Menu type items represent groupings of commands in a menu. When rendered, menus appear on the host toolbar as an icon, or on a host menu via an icon followed by the menu's name.</p>
+                                    <p>For users of assistive devices, the name of the menu is applied to menu's aria-label per<a href="http://www.w3.org/WAI/intro/aria" class="external-link" rel="nofollow"> WAI-ARIA</a>.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" class="confluenceTd"><code>group</code></td>
+                                <td colspan="1" class="confluenceTd">
+                                    <div class="table-wrap">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="confluenceTd"><code>label</code></td>
+                                                    <td class="confluenceTd">String</td>
+                                                    <td class="confluenceTd">(Optional) Friendly name of the menu, visible to assistive devices per<a href="http://www.w3.org/WAI/intro/aria" class="external-link" rel="nofollow"> WAI-ARIA</a>.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="confluenceTd"><code>items</code></td>
+                                                    <td class="confluenceTd">Array</td>
+                                                    <td class="confluenceTd">An array of command or menu items.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="1" class="confluenceTd">
+                                    <p>Group type items represent logical groupings of commands on a toolbar or within a menu. When an editor is rendered groups are designated by visual separators.</p>
+                                    <p>For users of assistive devices, the name of the group is applied to group's aria-label per<a href="http://www.w3.org/WAI/intro/aria" class="external-link" rel="nofollow"> WAI-ARIA</a>.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="aui-message hint shadowed information-macro">
+                    <p class="title">Built-In Command Item IDs</p> Icon
+                    <div class="message-content">
+                        <p>Built-in editor commands are represented by a predefined string id in toolbar configurations. For a list of built-in editor command ids see: <a href="Command-Item-IDs_19760406.html">Command Item IDs</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout two-left-sidebar" data-layout="two-left-sidebar">
+        <div class="cell aside" data-type="aside">
+            <div class="innerCell">
+                <h3 id="toolbar-ItemsArrayStructure">Items Array Structure</h3>
+                <p>The toolbar items array is the primary way to configure toolbars, menus and buttons for a <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> editor instance. The items array can be set to one or more toolbar group objects. These group objects can themselves be populated with further items to create toolbar buttons and menus in a rendered editor.</p>
+            </div>
+        </div>
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Toolbar Items Array Structure</b></div>
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">Toolbar Items ↳ Toolbar Group(s) ↳ Command Item(s) ↳ Menu Item(s) ↳ Command Item(s) ↳ Menu Items(s)</pre> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout two-left-sidebar" data-layout="two-left-sidebar">
+        <div class="cell aside" data-type="aside">
+            <div class="innerCell">
+                <h4 id="toolbar-GroupItems">Group Items</h4>
+                <p>Group items are objects that consist of a string name and an items array.</p>
+                <p>The items array may contain <a href="Command-Item-IDs_19760406.html">Command Item IDs</a> or command item objects. </p>
+                <p> </p>
+            </div>
+        </div>
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Group Item Example</b></div>
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var items = [ // Simple Toolbar group object with 2 function IDs { label : &#39;Toolbar Group 1&#39;, items : [&#39;undo&#39;, &#39;redo&#39;] } ];</pre> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout two-left-sidebar" data-layout="two-left-sidebar">
+        <div class="cell aside" data-type="aside">
+            <div class="innerCell">
+                <h4 id="toolbar-CommandItems">Command Items</h4>
+                <p>Command items are objects that consist of a string id, a string name, a string path to an icon resource, and an action function.</p>
+                <p>When command items are placed in a toolbar group, their functionality will be represented on an editor toolbar with a button. The button will will contain the specified icon image.</p>
+                <p>When command items are placed within a menu item object, their functionality will be represented with a menu item. The menu item will contain the specified icon image and the name string.</p>
+                <p>When a user clicks on the button (toolbar) or menu item (menu), the function specified in action will execute. </p>
+            </div>
+        </div>
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Command Item Example</b></div>
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">// Command Item Object var customItem = { id : &#39;custom1&#39;, text : &#39;Custom Button 1&#39;, icon : &#39;/path/to/icon1.png&#39;, action : function () { alert(&#39;Custom Button 1 Clicked&#39;); } };   var items = [ { // Toolbar group object with custom command label : &#39;Toolbar Group 2&#39;, items : [&#39;undo&#39;, &#39;redo&#39;, customItem] } ];</pre> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columnLayout two-left-sidebar" data-layout="two-left-sidebar">
+        <div class="cell aside" data-type="aside">
+            <div class="innerCell">
+                <h4 id="toolbar-MenuItems">Menu Items</h4>
+                <p>Toolbar menu items are objects that consist of a string id, a string name, a string path to an icon resource, and an items array.</p>
+                <p>The items array may contain <a href="Command-Item-IDs_19760406.html">Command Item IDs</a> or command item objects. </p>
+                <div>
+                    <p> </p>
+                    <div class="aui-message problem shadowed information-macro"> Icon
+                        <div class="message-content">
+                            <p>Nested menus are only supported to the second level.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell normal" data-type="normal">
+            <div class="innerCell">
+                <div class="code panel pdl" style="border-width: 1px;">
+                    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Menu Item Example</b></div>
+                    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">// Menu Item Object with 2 function IDs var customMenuItem = {  id : &#39;custom1&#39;, label : &#39;Custom Menu&#39;, icon : &#39;/path/to/icon1.png&#39;, items : [&#39;bold&#39;, &#39;italics&#39;] } };   // Items array with one group object containing 2 function IDs and a custom menu item object var items = [ { // Toolbar group object with custom menu item label : &#39;Toolbar Group 2&#39;, items : [&#39;undo&#39;, &#39;redo&#39;, customMenuItem] } ];</pre> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

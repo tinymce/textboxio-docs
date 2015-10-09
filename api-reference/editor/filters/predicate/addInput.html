@@ -1,0 +1,33 @@
+---
+layout: default
+title: editor.filters.predicate.addInput()
+---
+
+<p> Create a predicate based input filter for an editor instance with <code>editor.filters.predicate.addInput()</code>.</p>
+<p>The predicate based input filter modifies content added to the editor with: <code><a href="http://docs.ephox.com/pages/viewpage.action?pageId=16318667" rel="nofollow">textboxio.replace()</a></code>,<code> </code><code><a href="http://docs.ephox.com/pages/viewpage.action?pageId=16318712" rel="nofollow">editor.content.set()</a></code>, <code><a href="http://docs.ephox.com/pages/viewpage.action?pageId=16318716" rel="nofollow">editor.content.insertHtmlAtCursor()</a></code>.</p>
+<h2 id="editor.filters.predicate.addInput()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.filters.predicate.addInput(matchingFn, callback)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">// A matching function identifying elements that are HTML comments and then returning those elements var comments = function(element) { return element.nodeType == 8 || element.nodeName == &#39;#comment&#39;; }; // Create an in filter identifying comments, supplying the matching function highlights the comment text in a red span and then removes the original comment editor.filters.predicate.addInput(comments, function(elements) { $(elements).each(function(index, element){ var textContent = $(element)[0].textContent; $(element).after(&#39;&lt;span style=&quot;background-color:red;&quot;&gt;&#39; + textContent + &#39;&lt;/span&gt;&#39;); $(element).remove(); }); });</pre> </div>
+</div>
+<h2 id="editor.filters.predicate.addInput()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>matchingFn</code></td>
+                <td colspan="1" class="confluenceTd">Function</td>
+                <td class="confluenceTd">Specify a named function that returns the elements you wish to pass to the callback function.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>callback</code></td>
+                <td colspan="1" class="confluenceTd">Function</td>
+                <td class="confluenceTd">A function to process the array of matched elements.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="editor.filters.predicate.addInput()-Returns">Returns</h2>
+<p>No return value.</p>
+<p><a href="Filtering-content_19760340.html">Filtering content</a></p>
+<h2 id="editor.filters.predicate.addInput()-SeeAlso">See Also</h2>

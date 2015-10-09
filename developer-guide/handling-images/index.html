@@ -1,0 +1,152 @@
+---
+layout: default
+title: Handling Local Images
+---
+
+<p>Textbox.io gives you the ability to handle local images in one of several ways within your application. You may either upload local images from the client to your application, store images directly in the editor generated HTML itself (using base64 data URIs), or have the Textbox.io editor prevent local images from being inserted.</p>
+<p>With all but the last option (prevent local images) the user experience is the same: users can add images to <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> instances via the image upload dialog, by dragging and dropping images from their computer, or via copy-paste. </p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">Image Handling Option</th>
+                <th class="confluenceTh">Description</th>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">Keep image data in HTML content</td>
+                <td colspan="1" class="confluenceTd">[Default] Local images are stored within the editor's HTML content as base64 encoded data URIs.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd">Upload images</td>
+                <td class="confluenceTd">
+                    <p>Local images are uploaded to a remote server when added to the editor via HTTP POST.
+                        <br />Textbox.io automatically updates the <code>&lt;image&gt;</code> <code>src</code> attribute with the new path to the uploaded image.</p>
+                    <p>See the information on <a href="Handling-Local-Images_19760344.html">uploading local images</a> below to learn how to configure Textbox.io to do this. </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">Prevent local image insertion</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>Local image functionality is turned off - users can no longer use the local image upload dialog tab, drag-drop, or copy paste to add images to editor content. </p>
+                    <p>See the information on <a href="Handling-Local-Images_19760344.html">Preventing Local Image</a> Insertion below to learn how to configure Textbox.io to do this.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="aui-message hint shadowed information-macro">
+    <p class="title">Local vs. Remote Images</p> Icon
+    <div class="message-content">
+        <p>Local images are defined as those residing on the client filesystem. They may also be part of a word processor document or otherwise present on the clipboard. Textbox.io can be configured to upload local images to your application or embed them in editor HTML.</p>
+        <p>Remote images are those which exist on a remote host and are accessible via a URL.</p>
+    </div>
+</div>
+<h1 id="HandlingLocalImages-StoringLocalImagesinContent(base64dataURIs)">Storing Local Images in Content (base64 data URIs)</h1>
+<p><a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> will by default store local images added to an editor as embedded base64 <a href="http://en.wikipedia.org/wiki/Data_URI_scheme" class="external-link" rel="nofollow">data URIs</a>. </p>
+<p>If this is the desired editor behavior in your application, no further action is necessary. When a user adds an image to a <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> editor within your application <a href="http://textbox.io" class="external-link" rel="nofollow">textbox.io</a> will automatically embed that image into the HTML content. </p>
+<h1 id="HandlingLocalImages-#uploadUploadingLocalImages">Uploading Local Images</h1>
+<p>Configuring your application and Textbox.io for local image uploads involves first creating a server-side handler and then configuring your Textbox.io instance to use that handler.</p>
+<div class="aui-message warning shadowed information-macro">
+    <p class="title">Image Upload on Form Submission</p> Icon
+    <div class="message-content">
+        <p>If you have enabled the image upload functionality of Textbox.io is it <em><strong>strongly</strong></em> recommended that you review the information on <a href="Handling-Asynchronous-Image-Uploads_19760345.html">Handling Asynchronous Image Uploads</a>.</p>
+        <p>Textbox.io uploads images asynchronously to ensure the author's flow isn't interrupted by multiple image upload dialogs/prompts. However, developers need to be mindful of this when integrating Textbox.io so as to ensure all images are uploaded prior to content being submitted to a server.</p>
+    </div>
+</div>
+<p> </p>
+<h3 id="HandlingLocalImages-Server-sideUploadHandler">Server-side Upload Handler</h3>
+<p>In order to upload local files to the remote server via HTTP POST, you will need a server-side upload handler script that accepts the images and objects on the server and stores them in the correct directory or database. This script is the same script that would be used for uploading any file to the server via the HTTP POST method. </p>
+<p>For example, when you use a file input element (<code>&lt;INPUT type=&quot;file&quot;&gt;</code>), the script specified in the <code>action</code> attribute of the parent <code>&lt;form&gt;</code> element is used to upload the file to the server.</p>
+<p>The server-side upload handler script should return a JSON object similar to the one below. The returned JSON should include a single location attribute with the path to the stored image as it's value.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">{ &quot;location&quot; : &quot;/uploaded/image/path/image.png&quot; } </pre> </div>
+</div>
+<p> </p>
+<p>Note, that the '/' here in the <code>location</code> field is used to suggest a <code>root-relative</code> path. If you don't provide the leading '/', then the path will be <code>relative</code>. If you provide a protocol (e.g. <code>http</code>), then the path will be <code>absolute</code>. The table below shows how the full image path will be resolved against the various types of image locations:</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">Base Path</th>
+                <th class="confluenceTh">Image Location</th>
+                <th colspan="1" class="confluenceTh">Path Type</th>
+                <th class="confluenceTh">Full Image Path</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">http://server-name/base/</td>
+                <td class="confluenceTd">/uploaded/image.png</td>
+                <td colspan="1" class="confluenceTd">root-relative</td>
+                <td class="confluenceTd">http://server-name/uploaded/image.png</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">http://server-name/base/</td>
+                <td colspan="1" class="confluenceTd">uploaded/image.png</td>
+                <td colspan="1" class="confluenceTd">relative</td>
+                <td colspan="1" class="confluenceTd">http://server-name/base/uploaded/image.png</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">http://server-name/base/</td>
+                <td colspan="1" class="confluenceTd">http://elsewhere/image.png</td>
+                <td colspan="1" class="confluenceTd">absolute</td>
+                <td colspan="1" class="confluenceTd">http://elsewhere/image.png</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="sectionColumnWrapper">
+    <div class="sectionMacro">
+        <div class="sectionMacroRow">
+            <div class="columnMacro" style="width:50%;min-width:50%;max-width:50%;">
+                <h4 id="HandlingLocalImages-uploadHandlersExampleUploadHandlerScripts">Example Upload Handler Scripts</h4>
+                <p>The following scripts are reference implementations for handling server-side uploads with Textbox.io. Please note that these scripts are provided only for reference - they are not intended for production use.</p>
+                <ul>
+                    <li><a href="Node.js-Upload-Handler_19760347.html">Node.js Upload Handler</a></li>
+                    <li><a href="PHP-Upload-Handler_19760346.html">PHP Upload Handler</a></li>
+                </ul>
+            </div>
+            <div class="columnMacro" style="width:50%;min-width:50%;max-width:50%;">
+                <p>Your upload handler script should:</p>
+                <ul>
+                    <li>Store the image in a location appropriate for your application</li>
+                    <li>Success: Return JSON with the path to the uploaded image</li>
+                    <li>Failure: Return HTTP 500 if an error occurs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<h3 id="HandlingLocalImages-ConfiguringTextbox.iotoUseaServer-sideUploadHandler">Configuring Textbox.io to Use a Server-side Upload Handler</h3>
+<p>Once you've set up a server side upload handler, all that's left is to make Textbox.io aware of the handler's location via a <code><a href="configuration_19760396.html">configuration</a></code> object and set up the path used to construct the <code>&lt;image&gt; src</code> attribute.</p>
+<p>In the example below, any local image added to a the Textbox.io editor is uploaded to the handler script located at <a href="ttp://example.com/postAcceptor.php" rel="nofollow">ttp://example.com/postAcceptor.php</a>. Textbox.io then constructs the path to the newly uploaded image by combining the (optional) <code>basePath</code> value and the image filename. The resulting editor html is then updated with the new path to the image, generating HTML like: <code>&lt;img src=&quot;/my/application/images/filename.png&quot; /&gt;</code>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var config = { images : { upload : { url : &#39;/postAcceptor.php&#39;, // Handler URL basePath: &#39;/my/application/images/&#39;, // Remote image storage path credentials: false // Optional: sends cookies with the request when true } } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<p>For more detail on see the <a href="images_19760413.html">images configuration property</a>.</p>
+<h3 id="HandlingLocalImages-CORSConsiderations">CORS Considerations</h3>
+<p>You may choose for your web application to upload image data to a separate domain. If so, you will need to configure <a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing" class="external-link" rel="nofollow">Cross-origin resource sharing (CORS)</a> for your application to comply with JavaScript &quot;same origin&quot; restrictions.</p>
+<div class="aui-message warning shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>CORS has very strict rules about what constitutes a cross-origin request. The browser can require CORS headers when uploading to the same server the editor is hosted on, for example:</p>
+        <ul>
+            <li>A different port on the same domain name</li>
+            <li>Using the host IP address instead of the domain name</li>
+            <li>Swapping between HTTP and HTTPS for the page and the upload script</li>
+        </ul>
+        <p>The upload script URL origin must <em>exactly</em> match the origin of the URL in the address bar, or the browser will require CORS headers to access it. A good way to guarantee this is to use a relative URL to specify the script address, instead of an absolute one.</p>
+        <p>All supported browsers will print a message to the JavaScript console if there is a CORS error, and Textbox.io will display an error banner.</p>
+    </div>
+</div>
+<p>The <a href="Handling-Local-Images_19760344.html">Reference Upload Handler Scripts</a> provided here configure CORS on a per script basis. You may also choose to configure CORS at the <a href="http://www.w3.org/wiki/CORS_Enabled#At_the_Web_Application_level..." style="line-height: 1.4285715;" class="external-link" rel="nofollow">web application layer</a> or the <a href="http://www.w3.org/wiki/CORS_Enabled#At_the_HTTP_Server_level..." style="line-height: 1.4285715;" class="external-link" rel="nofollow">HTTP server layer</a>.  </p>
+<p><strong>Further Reading on CORS</strong></p>
+<ul>
+    <li><a href="http://CORS Enabled" class="external-link" rel="nofollow">W3C Wiki - CORS Enabled</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" class="external-link" rel="nofollow">MDN - HTTP access control (CORS)</a></li>
+    <li><a href="http://www.w3.org/TR/cors/" class="external-link" rel="nofollow">W3C - Cross-Origin Resource Sharing </a><a href="http://www.w3.org/TR/cors/" class="external-link" rel="nofollow">Specification</a></li>
+</ul>
+<h1 id="HandlingLocalImages-#preventimagesPreventingLocalImageInsertion">Preventing Local Image Insertion</h1>
+<p>If you wish to prevent the insertion of local images by users you may do so by setting the <code>images.allowLoca</code>l to <code>false</code>.</p>
+<p>When <code>images.allowLocal</code> is set to false, users will be unable to add local images to editor content from the local image upload dialog tab, by drag-drop, or by copy paste. If a user takes an action that would normally result in the insertion of an image, a notification will be displayed that insertion of images is not allowed.</p>
+<p>The example below creates an editor where local images have been prevented.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var config = { images : { allowLocal : false // Prevent users from adding local images } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>

@@ -1,0 +1,195 @@
+---
+layout: default
+title: images
+---
+
+
+<p>The images property controls how images are handled within a Textbox.io editor instance.</p>
+<p>This property can be configured to one of three behaviors:</p>
+<ul>
+    <li>Uploading Images via Textbox.io's Built-in Upload Mechanism</li>
+    <li>Uploading Images via a Custom JavaScript Upload Handler Function</li>
+    <li>Preventing Local Images (No Upload)</li>
+</ul>
+<h2 id="images-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Property</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th colspan="1" class="confluenceTh">Default</th>
+                <th colspan="1" class="confluenceTh">Properties</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>allowLocal</code></td>
+                <td class="confluenceTd">Boolean</td>
+                <td colspan="1" class="confluenceTd"><code>true</code></td>
+                <td colspan="1" class="confluenceTd">
+                    <p><code>true</code> allows local images into editor content. <code>false</code> prevents local images from being inserted.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>upload</code></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd"> </td>
+                <td colspan="1" class="confluenceTd">
+                    <p>Configures the uploading of local images to your application using <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a>'s built in upload mechanism.</p>
+                    <p>To use <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a>'s built-in upload mechanism, use <code>upload.url</code>, <code>upload.basePath</code>, and <code>upload</code>.<code>credentials</code>.</p>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th colspan="1" class="confluenceTh">Property</th>
+                                    <th colspan="1" class="confluenceTh">Type</th>
+                                    <th colspan="1" class="confluenceTh">Default</th>
+                                    <th colspan="1" class="confluenceTh">Properties</th>
+                                </tr>
+                                <tr>
+                                    <td class="confluenceTd"><code>url</code></td>
+                                    <td class="confluenceTd">String</td>
+                                    <td colspan="1" class="confluenceTd"> </td>
+                                    <td class="confluenceTd">Defines the location of your POST acceptor script. This is the URL to which images will be uploaded.</td>
+                                </tr>
+                                <tr>
+                                    <td class="confluenceTd"><code>basePath</code></td>
+                                    <td class="confluenceTd">String</td>
+                                    <td colspan="1" class="confluenceTd"> </td>
+                                    <td class="confluenceTd">[Optional] Defines the base path of images uploaded in your application. This path is combined with the path returned from your POST acceptor script.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" class="confluenceTd"><code>credentials</code></td>
+                                    <td colspan="1" class="confluenceTd">Boolean</td>
+                                    <td colspan="1" class="confluenceTd">false</td>
+                                    <td colspan="1" class="confluenceTd">[Optional] <code>true</code>: sends cookies with the upload POST (sets the XHR credentials flag). <code>false</code>: does not send cookies.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>To use a custom JavaScript handler function, use <code>upload.handler</code>. Note that defining <code>upload.handler</code> overrides <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a>'s built in upload mechanism.</p>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th colspan="1" class="confluenceTh">Property</th>
+                                    <th colspan="1" class="confluenceTh">Type</th>
+                                    <th colspan="1" class="confluenceTh">Default</th>
+                                    <th colspan="1" class="confluenceTh">Properties</th>
+                                </tr>
+                                <tr>
+                                    <td class="confluenceTd"><code>handler</code></td>
+                                    <td class="confluenceTd">Function</td>
+                                    <td colspan="1" class="confluenceTd"> </td>
+                                    <td class="confluenceTd">Configures the uploading of images to your application using a custom Javascript upload handler.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <br />
+</div>
+<div>Examples</div>
+<h3 id="images-UsingTextbox.io&#39;sBuilt-inUploadMechanism">Using Textbox.io's Built-in Upload Mechanism</h3>
+<div>The simplest way to handle images is use automatic background uploads. A simple <code style="line-height: 1.4285715;"><a href="configuration_19760396.html">configuration</a></code> object is used to define the upload location for images. <code style="line-height: 1.4285715;">url</code> is the target to which local images are uploaded via HTTP POST. <code style="line-height: 1.4285715;">basePath</code> is used in conjunction with the value returned by the POST handler to link to the uploaded image within the editor's content. More information is available in the <a href="Handling-Local-Images_19760344.html">Handling Local Images</a> guide.</div>
+<div>
+    <p> </p>
+    <div class="code panel pdl" style="border-width: 1px;">
+        <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var config = { images : { upload : { url : &#39;http://example.com/path/to/POSTAcceptor.php&#39;, basePath : &#39;http://example.com/path/to/images&#39; } } }; var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+    </div>
+    <p> </p>
+</div>
+<h3 id="images-UsingaCustomJavaScriptUploadHandlingFunction">Using a Custom JavaScript Upload Handling Function</h3>
+<p>If images must be uploaded using more than a simple HTTP POST, the entire upload process can be replaced. For example, you may wish to perform additional client side validation or manipulation on the images prior to their upload.  The handler function is passed three arguments; Data, Success and Failure.</p>
+<h5 id="images-DataProperties">Data Properties</h5>
+<p>The first argument is an object providing information about the image that has been inserted.</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Function</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th colspan="1" class="confluenceTh">Description</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code>data.blob()</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                    <p><a href="https://developer.mozilla.org/en/docs/Web/API/Blob" class="external-link" rel="nofollow">Blob</a></p>
+                </td>
+                <td class="confluenceTd">
+                    <p>JavaScript Blob instance representing the image binary data</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>data.base64()</code> </td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td class="confluenceTd">
+                    <p>A copy of the image binary data pre-converted to base64 for your convenience</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>data.filename()</code></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">The actual filename, where possible, otherwise a generated filename based on the MIME type</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>data.id()</code></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">A unique identifier for this image</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h5 id="images-SuccessParameters">Success Parameters</h5>
+<p> The second argument is a function that indicates the upload has successfully completed</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code>url</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                    <p>String</p>
+                </td>
+                <td class="confluenceTd">
+                    <p>The URL to use as the image src. No post-processing is performed on this value (the <code>basePath</code> configuration property is ignored).</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h5 id="images-FailureParameters">Failure Parameters<br /></h5>
+<p>The third argument is a function that indicates the upload failed.</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code>message</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                    <p>String (optional)</p>
+                </td>
+                <td class="confluenceTd">
+                    <p>A message to display to the user in an error banner.</p>
+                    <p>This value is optional - if you do not wish to translate your error a generic message is available which has been translated into all supported languages.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var config = { images : { upload : { handler : function (data, success, failure) { // For example, if myuploader.upload() returns a promise, e.g. jQuery ajax myuploader.upload(data.blob(), data.filename()).then(function (&lt;upload response&gt;) { success(&lt;response image url&gt;); }, function () { failure(&quot;my failure message&quot;); }); } } } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<h3 id="images-PreventingLocalImages(NoUpload)">Preventing Local Images (No Upload)</h3>
+<p>A developer may choose to prevent local images from being added to an editor  ( <code>allowLocal : false</code> ). When local images have been blocked, the insert image dialog does not display the Local Files tab. If the user attempts to paste an image into the editor or drag and drop image insertion, an error message is displayed.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var config = { images : { allowLocal : false } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>

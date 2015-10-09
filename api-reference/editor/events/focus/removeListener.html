@@ -1,0 +1,26 @@
+---
+layout: default
+title: editor.events.focus.removeListener()
+---
+
+<p> Remove a custom event listener on a <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> editor focus event with <code>editor.events.focus.removeListener()</code>.</p>
+<p>You may remove any custom event listeners by passing the callback function used to specify the event with <code>.addListener()</code> to <code>.removeListener()</code>.</p>
+<h2 id="editor.events.focus.removeListener()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.events.loaded.addListener(callback)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var notify = function () { alert(&#39;Textbox.io got focus.&#39;); }; // Add a custom event listener to the editor focus event editor.events.focus.addListener(notify); // Remove a custom event listener editor.events.focus.removeListener(notify);</pre> </div>
+</div>
+<h2 id="editor.events.focus.removeListener()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>callback</code></td>
+                <td colspan="1" class="confluenceTd">Function</td>
+                <td class="confluenceTd">Function used to specify the custom event listener that should be removed.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="editor.events.focus.removeListener()-Returns">Returns</h2>
+<p>No return value.</p>

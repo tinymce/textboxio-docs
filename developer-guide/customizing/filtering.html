@@ -1,0 +1,45 @@
+---
+layout: default
+title: Filtering content
+---
+
+<h2 id="Filteringcontent-Filteroverview">Filter overview</h2>
+<p>Filters are used by the editor to manipulate content as it is entered (via <code><a href="19760382.html">editor.content.set()</a></code> or a paste event), or when content is requested from the editor (via <code><a href="19760380.html">editor.content.get()</a></code>).</p>
+<p>Such filters are used internally by the editor to perform meaningful functionality such as:</p>
+<ul>
+    <li>Cleaning dirty HTML from Microsoft® Word when it is pasted</li>
+    <li>Stripping unnecessary or undesirable CSS from input HTML</li>
+</ul>
+<p> </p>
+<p>Filters come in 2 types:</p>
+<ol>
+    <li><strong>Input filters - </strong>manipulate raw content before it becomes visible in the editor. Such uses for an input filter may be to change or strip styling from input, or convert invisible elements into elements that are visible</li>
+    <li><strong>Output filters - </strong>executed before the editor returns content to the API (i.e. before
+        <a href="19760380.html"> <code>editor.content.get()</code></a> returns a string). Output filters can be used to strip-out internal content created during the editing process (such as invisible marker elements, or other elements used for editing and annotation, but that are not necessarily desired in the final output)</li>
+</ol>
+<p>Filters are added to editor instances at runtime.</p>
+<p> </p>
+<p><img class="confluence-embedded-image image-center" src="/assets/img/20054372.png"></p>
+<p style="text-align: center;"><em>Input filters vs. Output filters</em></p>
+<p> </p>
+<h2 id="Filteringcontent-Implementingfilters:Predicatevs.Selectorfilters">Implementing filters: Predicate vs. Selector filters</h2>
+<p>The basic premise behind implementing a filter is to <em>find </em>elements in the source document that you wish to manipulate in some way. You can do this 2 ways in the Textbox.io API:</p>
+<ul>
+    <li><strong>Using a selector - </strong>Where your filter function is executed on all elements on the document matching the selector pattern you provide. </li>
+    <li><strong>Using a predicate function-</strong> Where you provide a <em>match predicate function</em> to determine which elements your filter function should be executed on.  Your <em>predicate function</em> is passed every element in the source document. It should return <code>true</code> if you require the element to be processed by the filter function. </li>
+</ul>
+<p> </p>
+<h3 id="Filteringcontent-Example:Creatingaselectorinputfilter">Example: Creating a selector input filter</h3>
+<p>In this example, we'll create an input filter that adds some custom CSS to every <code>H1</code> element in the source document. Note how we use a <em>selector string</em> as the first argument.</p>
+<p> </p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/f0ka88ay/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h3 id="Filteringcontent-Example:Creatingapredicateinputfilter">Example: Creating a predicate input filter</h3>
+<p>Here's an example the same input filter, but rather than using a selector,  a predicate function is to find the <code>H1</code> elements:</p>
+<p> </p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/g7hdsq0u/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h3 id="Filteringcontent-Example:Outputfilter">Example: Output filter</h3>
+<p>In the example below, a filter has been implemented to strip any inline styling from <code>p</code> tags before <code><a href="19760380.html">editor.content.get()</a></code> returns a value:</p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/tjvvp1k5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>

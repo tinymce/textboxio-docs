@@ -1,0 +1,51 @@
+---
+layout: default
+title: message()
+---
+
+<p> Display a message banner in the editor UI with <code>editor.message()</code>. </p>
+<p>A message banner may be of one of three types: info (blue), warning (orange), or error (red).  If you so choose, you may display more than one message at a time.</p>
+<p><img class="confluence-embedded-image" width="700" src="/assets/img/20054375.png"></p>
+<h2 id="message()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.message(type, timeout, message)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Replace the element with id &#39;replaceMe&#39; var editor = textboxio.replace( &#39;#replaceMe&#39; ); // Display an informational message in the editor UI for 5 seconds editor.message(&#39;info&#39;, 5000, &#39;This editor is ready to use.&#39;);</pre> </div>
+</div>
+<h2 id="message()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code>type</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                    <p>String</p>
+                </td>
+                <td class="confluenceTd">
+                    <p>Specify the message type: info, warning, or error.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd">timeout</td>
+                <td colspan="1" class="confluenceTd">Integer</td>
+                <td class="confluenceTd">
+                    <p>Specify time in msec before the editor message is automatically dismissed.</p>
+                    <p><em>Note: Specifying 0 will cause the message to be displayed indefinitely.</em></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre>message</pre></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">The text to be displayed in the message.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="message()-Returns">Returns</h2>
+<p>The message function returns an object with a hide function. This can be used to create a message that is hidden by some other action, instead of by a timeout.</p>
+<h2 id="message()-Example.1">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.message(type, timeout, message)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Replace the element with id &#39;replaceMe&#39; var editor = textboxio.replace( &#39;#replaceMe&#39; ); // Display a warning message that doesn&#39;t hide automatically var msg = editor.message(&#39;warning&#39;, 0, &#39;Connection lost&#39;);   ... later ...   // Hide the message msg.hide();</pre> </div>
+</div>

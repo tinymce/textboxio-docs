@@ -1,0 +1,43 @@
+---
+layout: default
+title: css
+---
+
+
+<p>The <code><a href="configuration_19760396.html">configuration</a> <a href="css_19760398.html">css</a></code> property defines options related to editor rendering CSS and CSS classes/elements available in the styles menu.</p>
+<h2 id="css-ExampleConfiguration">Example Configuration</h2>
+<p>In this example, a simple <code><a href="configuration_19760396.html">configuration</a></code> object is created that adds a rendering stylesheet to the editor, inline rendering CSS,  and configures the styles available to apply.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var config = { css : { documentStyles : &#39;body { background: red; }&#39;, styles : [ { rule : &#39;p&#39; }, { rule : &#39;h1.blue&#39;, text: &#39;Blue Heading 1&#39; }, { rule : &#39;.green&#39;, text: &#39;Green Inline Style&#39; } ], stylesheets : [&#39;test.css&#39;] } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<h2 id="css-Properties">Properties</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <th colspan="1" class="confluenceTh">Property</th>
+            <th colspan="1" class="confluenceTh">Type</th>
+            <th colspan="1" class="confluenceTh">Value</th>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd"><code><a href="documentStyles_19760400.html">documentStyles</a></code></td>
+            <td colspan="1" class="confluenceTd">String</td>
+            <td colspan="1" class="confluenceTd">
+                <p>String of CSS for rendering editor content.</p>
+                <p><em>Note: this parameter is ignored when using inline editing (i.e. invoking the editor with <code>texboxio.inline()</code>)</em></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" class="confluenceTd"><code><a href="styles_19760399.html">styles</a></code></td>
+            <td colspan="1" class="confluenceTd">Array</td>
+            <td colspan="1" class="confluenceTd">An array of available <a href="styles_19760399.html">styles definitions</a>.</td>
+        </tr>
+        <tr>
+            <td class="confluenceTd"><code><a href="stylesheets_19760401.html">stylesheets</a></code></td>
+            <td class="confluenceTd">Array</td>
+            <td colspan="1" class="confluenceTd">
+                <p>An array of string paths to editor rendering stylesheets.</p>
+                <p><em>Note: this parameter is ignored when using inline editing (i.e. invoking the editor with <code>texboxio.inline()</code>)</em></p>
+            </td>
+        </tr>
+    </tbody>
+</table>

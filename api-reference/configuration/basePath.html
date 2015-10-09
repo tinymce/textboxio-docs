@@ -1,0 +1,46 @@
+---
+layout: default
+title: basePath
+---
+
+
+<p>This option configures the path to the <code>textboxio</code> folder in your application. This path on the server must contain the <code>resources</code> folder from the unpacked textboxio.zip. The editor will attempt to detect this path automatically by searching for a script tag reference to itself, assuming that the textboxio.zip file has been unpacked at that location.</p>
+<div class="aui-message problem shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>The editor will throw a JavaScript error and not load if a <code>basePath</code> is not provided and auto detection fails.</p>
+        <p>Auto detection will fail if the <code>te</code><code>xtboxio.js</code> script is added to the page dynamically or processed by another script / application such that the name has changed. When this occurs it is necessary to specify a <code>basePath</code> in the editor configuration.</p>
+    </div>
+</div>
+<h2 id="basePath-ExampleConfiguration">Example Configuration</h2>
+<p>In this example, a <code><a href="configuration_19760396.html">configuration</a></code> object specifies a custom path to the<code> textboxio</code> folder as unpacked from textboxio.zip.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">Server contents: server ↳ path ↳ to ↳ textboxio ↳ resources ↳ textboxio.js var config = { basePath : &#39;/path/to/textboxio&#39; };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<h2 id="basePath-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">
+                    <div class="tablesorter-header-inner">Property</div>
+                </th>
+                <th colspan="1" class="confluenceTh">
+                    <div class="tablesorter-header-inner">Type</div>
+                </th>
+                <th colspan="1" class="confluenceTh">
+                    <div class="tablesorter-header-inner">Properties</div>
+                </th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">basePath</td>
+                <td class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>A string that defines the file path to the textboxio folder.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="basePath-Seealso">See also</h2>
+<ul> </ul>
+<li><a href="Getting-Started_19760335.html">Getting Started</a></li>

@@ -1,0 +1,60 @@
+---
+layout: default
+title: replaceAll()
+---
+
+<p> Create editor instances by replacing <code>&lt;textarea&gt;</code> or <code>&lt;div&gt;</code> elements with <code>textboxio.replaceAll()</code>. The initial content of the editor is set to the content/value of the replaced element.</p>
+<p>When Textbox.io replaces a <code>&lt;textarea&gt;</code> element within a <code>&lt;form&gt;</code>, it will update the original <code>&lt;textarea&gt;</code> element when the form is submitted, supplying updated content as part of the <code>&lt;form&gt;</code> POST. </p>
+<p>When Textbox.io replaces <code>&lt;div&gt;</code> elements, content must be requested from Textbox.io using a JavaScript API, see: <a class="createlink" href="/pages/createpage.action?spaceKey=tbio&amp;title=Get+Editor+Content&amp;linkCreation=true&amp;fromPageId=19760392">Get Editor Content</a>.</p>
+<h2 id="replaceAll()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>textboxio.replaceAll(selector, [options])</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">&lt;textarea id=&quot;editor1&quot;&gt;First Content&lt;/textarea&gt; &lt;textarea id=&quot;editor2&quot;&gt;Second Content&lt;/textarea&gt; ... // Create a Textbox.io editor by searching for textareas var editors = textboxio.replaceAll( &#39;textarea&#39; );</pre> </div>
+</div>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>textboxio.replaceAll(elements, [options])</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">&lt;div id=&quot;editor1&quot;&gt;First Content&lt;/div&gt; &lt;textarea id=&quot;editor2&quot;&gt;Second Content&lt;/textarea&gt; ... // Create a Textbox.io editor by replacing the specific DOM elements var div = document.getElementById(&#39;editor1&#39;); var textarea = document.getElementById(&#39;editor2&#39;); var editors = textboxio.replaceAll( [div, textarea] );</pre> </div>
+</div>
+<h2 id="replaceAll()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code>selector</code></p>
+                    <p>or</p>
+                    <p><code>elements</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                    <p>String</p>
+                    <p>or</p>
+                    <p>Array</p>
+                </td>
+                <td class="confluenceTd">
+                    <p>Specify a <a href="http://www.w3.org/TR/css3-selectors/" class="external-link" rel="nofollow">CSS3 selector</a> representing the <code>&lt;div&gt;</code> or <code>&lt;textarea&gt;</code> element or elements you wish Textbox.io to replace for editing.</p>
+                    <p>or</p>
+                    <p>Specify an array of the <code>&lt;div&gt;</code> or <code>&lt;textarea&gt;</code> elements you wish Textbox.io to replace for editing.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code><a href="configuration_19760396.html">configuration</a></code> </td>
+                <td colspan="1" class="confluenceTd">Object (optional)</td>
+                <td class="confluenceTd">
+                    <p>An optional group of key-value pairs that specify options/settings for the Textbox.io instances you are invoking.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="replaceAll()-Returns">Returns</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="confluenceTd"><code><a href="editor_19760351.html">textboxio.editor</a></code></td>
+            <td colspan="1" class="confluenceTd">Array</td>
+            <td class="confluenceTd">
+                <p>An array of Textbox.io editor instances. Each element matched with <code>textboxio.replaceAll()</code> creates a new instance of Textbox.io, which is then added to the returned array in order.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

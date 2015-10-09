@@ -1,0 +1,33 @@
+---
+layout: default
+title: editor.filters.selector.addInput()
+---
+
+<p> Create a selector based input filter for an editor instance with <code>editor.filters.selector.addInput()</code>.</p>
+<p>The selector based input filter modifies content added to an editor with: <code><a href="http://docs.ephox.com/pages/viewpage.action?pageId=16318667" rel="nofollow">textboxio.replace()</a></code>,<code> </code><code><a href="http://docs.ephox.com/pages/viewpage.action?pageId=16318712" rel="nofollow">editor.content.set()</a></code>, <code><a href="http://docs.ephox.com/pages/viewpage.action?pageId=16318716" rel="nofollow">editor.content.insertHtmlAtCursor()</a></code>.</p>
+<h2 id="editor.filters.selector.addInput()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.filters.selector.addInput(selector, callback)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Create an input filter for elements with class &#39;blue&#39; that strips classes from identified elements editor.filters.selector.addInput(&#39;.blue&#39;, function(elements) { elements.forEach(function(element) { element.className = &quot;&quot;; }); });</pre> </div>
+</div>
+<h2 id="editor.filters.selector.addInput()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>selector</code></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td class="confluenceTd">Specify a <a href="http://www.w3.org/TR/css3-selectors/" class="external-link" rel="nofollow">CSS3 selector</a> representing the elements you wish to pass to the filter.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>callback</code></td>
+                <td colspan="1" class="confluenceTd">Function</td>
+                <td colspan="1" class="confluenceTd">Specify a function to process the array of matched elements.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="editor.filters.selector.addInput()-Returns">Returns</h2>
+<p>No return value.</p>
+<p><a href="Filtering-content_19760340.html">Filtering content</a></p>
+<h2 id="editor.filters.selector.addInput()-SeeAlso">See Also</h2>

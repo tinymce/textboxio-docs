@@ -1,0 +1,62 @@
+---
+layout: default
+title: inlineAll()
+---
+
+<p> Creates editable instances from a list or CSS3 query string of elements. The initial content of the editor is set to the content/value of the replaced element.</p>
+<h2 id="inlineAll()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">&lt;div class=&quot;editor first&quot;&gt;First Content&lt;/textarea&gt; &lt;div class=&quot;editor first&quot;&gt;Second Content&lt;/textarea&gt; ... // Create a Textbox.io editor by searching for items with the &quot;editor&quot; class var editors = textboxio.inlineAll( &#39;.editor&#39; ); // returns an array of 2 editor instances</pre> </div>
+</div>
+<p> </p>
+<h2 id="inlineAll()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd">
+                    <p>elements</p>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                    <p>String</p>
+                    <p>or</p>
+                    <p>Array</p>
+                </td>
+                <td class="confluenceTd">
+                    <p>Specify a <a class="external-link" href="http://www.w3.org/TR/css3-selectors/" rel="nofollow">CSS3 selector</a> representing the elements to be made editable. Note that <code>textarea</code> is not supported in this mode.</p>
+                    <p>or</p>
+                    <p>Specify an array of DOM elements you wish Textbox.io to make editable.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code><a href="configuration_19760396.html">configuration</a></code> </td>
+                <td colspan="1" class="confluenceTd">Object (optional)</td>
+                <td class="confluenceTd">
+                    <p>An optional group of key-value pairs that specify options/settings for the <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> instances you are invoking.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="inlineAll()-Returns">Returns</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code><a href="editor_19760351.html">editor</a>[]</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">Array</td>
+                <td class="confluenceTd">
+                    <p>An array of <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> editor instances. Each element matched with <code>textboxio.replaceAll()</code> creates a new instance of <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a>, which is then added to the returned array in order.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<h2 id="inlineAll()-Seealso">See also</h2>
+<ul>
+    <li><a href="19760389.html">inline()</a></li>
+</ul>
+<li><a href="Editor-types---Classic-vs-Inline_19760333.html">Editor types - Classic vs Inline</a></li>

@@ -1,0 +1,29 @@
+---
+layout: default
+title: restore()
+---
+
+<p> Remove an existing Textbox.io editor from the page, restoring the original element container. Content modified using Textbox.io is preserved within the restored container.</p>
+<h2 id="restore()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.restore()</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Replace the element with id &#39;replaceMe&#39; var editor = textboxio.replace( &#39;#replaceMe&#39; ); // Remove the Textbox.io editor var element = editor.restore();</pre> </div>
+</div>
+<p>Returns</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>element</code></td>
+                <td colspan="1" class="confluenceTd">HTML element</td>
+                <td class="confluenceTd">
+                    <p>The element that was previously replaced by Textbox.io. Returned element contents are updated with changes made during an editing session.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <br />
+</div>
+<p> </p>

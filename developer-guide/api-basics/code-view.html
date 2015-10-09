@@ -1,0 +1,45 @@
+---
+layout: default
+title: HTML Code View
+---
+
+<p>Textbox.io includes the ability for users to directly edit HTML via code view. This provides power users with more flexibility over the content they create and includes features such as automatic tag completion and matching. </p>
+<p>When enabled, the user can toggle between <em style="line-height: 1.4285715;">code view</em> and <em style="line-height: 1.4285715;">design view</em> by clicking on the icon in the bottom right corner of the editor container</p>
+<p> </p>
+<p><img class="confluence-embedded-image confluence-thumbnail image-center" width="300" src="/assets/img/20054356.png"></p>
+<p style="text-align: center;"><em>Editor container with code view enabled. The user can toggle between code and design views by clicking the icon in the bottom right corner. </em></p>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>Code view is only available in <a href="Editor-types---Classic-vs-Inline_19760333.html">classic mode</a> and is enabled by default.</p>
+    </div>
+</div>
+<h2 id="HTMLCodeView-Switchingbetweencodeviewanddesignviewprogrammatically">Switching between code view and design view programmatically</h2>
+<p>The Textbox.io API provides functionality to toggle between code and design views via <code><a href="19760353.html">editor.mode.set(mode)</a></code>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var editor = textboxio.replace(&#39;#id&#39;); editor.mode.set(&#39;code&#39;); // switches the editor into HTML markup editing mode editor.mode.set(&#39;design&#39;); // switches the editor into WYSIWYG (&#39;design&#39;) mode var currentMode = editor.mode.get(); //returns the current mode, either &#39;design&#39; or &#39;code&#39;.</pre> </div>
+</div>
+<h2 id="HTMLCodeView-Hidingthecodeviewbutton">Hiding the code view button</h2>
+<p>If you wish to switch between code view and design view programmatically, you may wish to disable the code view button. To disable the code view button but leave the code view feature enabled, set the <code><a href="configuration_19760396.html">configuration</a></code> <code><a href="codeview_19760397.html">codeview.showButton</a></code> property to <code>false</code>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var config = { codeview: { showButton : false // Hides the code view button, default is true (shown) } };   var editor = textboxio.replace(&#39;#id&#39;, config); </pre> </div>
+</div>
+<h2 id="HTMLCodeView-Disablingcodeview">Disabling code view</h2>
+<p>In some instances, you may need to disable code view feature via the <code><a href="configuration_19760396.html">configuration</a></code> <code><a href="codeview_19760397.html">codeview.enabled</a></code> property.</p>
+<p>When you disable the code view feature, the button is also removed from the Textbox.io UI. </p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var config = { codeview: { enabled : false // Disables code view feature, default is true (enabled) } };   var editor = textboxio.replace(&#39;#id&#39;, config); </pre> </div>
+</div>
+<h2 id="HTMLCodeView-Filtering">Filtering</h2>
+<p>Toggling between code and design views triggers filter logic (both external and potentially via plugins) to be executed on editor content. This is necessary to sanitize content and remove superfluous UI (such as spelling underlines, etc) from content when switching. </p>
+<p>Logic is as follows:</p>
+<ul>
+    <li><strong>Switching from design to code view</strong> - code view's content is run through the <code style="font-size: 14.0px;line-height: 1.4285715;">output</code> filter chain</li>
+    <li><strong>Switching from code view to design view - </strong>the design view's content is run through the <code>input</code> filter chain</li>
+</ul>
+<p>See <a href="Filtering-content_19760340.html">Filtering content</a> for more information on content filtering.</p>
+<h2 id="HTMLCodeView-Seealso:">See also:</h2>
+<ul>
+    <li><a href="API-reference_19760350.html">API reference</a></li>
+    <li><a href="Filtering-content_19760340.html">Filtering content</a></li>
+</ul>
+<li><a href="Customizing-the-Editor_19760336.html">Customizing the Editor</a></li>

@@ -1,0 +1,28 @@
+---
+layout: default
+title: editor.content.documentElement()
+---
+
+<p> Access an instance's HTML document object by using <code style="line-height: 1.4285715;">editor.content.documentElement()</code>.</p>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>To obtain the body element, simply use the <code>document.body</code> property.</p>
+    </div>
+</div>
+<h2 id="editor.content.documentElement()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.content.documentElement()</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Retrieve an editor&#39;s document, then identify the body element var edDocument = editor.content.documentElement(); var edBody = edDocument.body;</pre> </div>
+</div>
+<h2 id="editor.content.documentElement()-Returns">Returns</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="confluenceTd"><code>HTML Document</code></td>
+            <td colspan="1" class="confluenceTd">Object</td>
+            <td class="confluenceTd">
+                <p>The HTML document element for the target editor. Null if the editor has not finished loading.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

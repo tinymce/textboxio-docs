@@ -1,0 +1,19 @@
+---
+layout: default
+title: writing content-aware code
+---
+
+<h1 id="Macros:writingcontent-awarecode-Whatisamacro?">What is a macro?</h1>
+<p>Textbox.io provides a <a href="macros_19760355.html">Macro API </a>enabling you to create functions that detect particular content in the editor as a user types, and perform meaningful actions to manipulate the content.  Specifically macros are evaluated when the user presses the space or the enter keys. </p>
+<p>Currently, Textbox provides the ability to add a &quot;Simple&quot; macro, using:</p>
+<p style="margin-left: 30.0px;"><code>editor.macros.addSimpleMacro('startString', 'endString', callback)</code></p>
+<p>where any text entered before the spacebar is pressed that begins with <code style="line-height: 1.4285715;">startString</code> and ends with <code style="line-height: 1.4285715;">endString</code> forms a pattern. When a match is found, <code style="line-height: 1.4285715;">callback</code> is applied with the match as an argument.</p>
+<p><code>callback</code> can return a replacement (if one is necessary), or the original that was matched.</p>
+<h2 id="Macros:writingcontent-awarecode-Example:Redtext">Example: Red text</h2>
+<p>In the example provided below, we match on any text that begins with <code>[red]</code> and ends with <code>[/red]</code>, and wrap the text in a <code>span</code> where the color is set to red. For example, any of the following would be matches:</p>
+<ul>
+    <li><code>[red]hello world[/red]</code></li>
+    <li><code>[red]testing[/red]</code></li>
+    <li><code>[red] She sells sea shells by the sea shore[/red]</code></li>
+    <iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/9g326nyo/embedded/result,js,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+</ul>

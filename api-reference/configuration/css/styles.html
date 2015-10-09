@@ -1,0 +1,254 @@
+---
+layout: default
+title: styles
+---
+
+
+<p>Textbox.io enables fine-grained configuration of the styles shown on the styles drop-down menu.</p>
+<p><code>styles</code> is an array of <code>style</code> definitions. A <code>style</code> is an item that appears on the styles drop-down. When clicked, the editor selection is transformed to the <code>rule</code> defined in the style definition.</p>
+<h2 id="styles-styledefinitions"><code>style</code> definitions</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Property</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th colspan="1" class="confluenceTh">Value</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><pre>rule</pre></td>
+                <td class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>The transformation to be made to the selection</p>
+                    <p> </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>text</code></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">(Optional) The text to appear in the dropdown list item.
+                    <br />
+                    <p>eg: <code>&quot;My Custom Style&quot;</code></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<h2 id="styles-Example">Example</h2>
+<p>In the example below a configuration is created that specifies a custom <a href="css_19760398.html">css styles</a> array with 4 style definitions.  </p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var config = { css : { styles : [ { rule : &#39;p&#39; }, // Change selected elements to paragraph elements { rule : &#39;h1.blue&#39;, text: &#39;Blue heading&#39; }, // Change selected elements to heading1 elements, apply blue class. Shown in the styles dropdown as &#39;Blue heading&#39; { rule : &#39;a.red&#39; }, // Apply a red class to selected anchor elements { rule : &#39;.green&#39; } // Apply green class to selected elements ] } }; </pre> </div>
+</div>
+<p>This configuration would result in 4 options added to the block-styles drop-down:</p>
+<ul>
+    <li>Paragraph</li>
+    <li>Blue Heading</li>
+    <li>a.red</li>
+    <li>.green</li>
+</ul>
+<h2 id="styles-StylingTransformationRules">Styling Transformation Rules</h2>
+<p>The following intended styling actions are available, based on the syntax used when defining <a href="css_19760398.html">css styles</a> array items. </p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Rule Syntax</th>
+                <th colspan="1" class="confluenceTh">Transformation</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>.clazz</code></td>
+                <td colspan="1" class="confluenceTd">Wrap selected text in <code>&lt;span class=&quot;clazz&quot;&gt; </code> </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code>el</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">Convert the block containing the selection to type <code>el</code></td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">
+                    <p><code>el.clazz</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">Convert the block containing the selection to type <code>el</code> with css class <code>clazz</code></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<p>Transformations are subject to some limitation, based on styling transformation rules. </p>
+<h3 id="styles-InvalidStyleTransformationRules">Invalid Style Transformation Rules </h3>
+<p>Styling transformations that are dependent on the CSS cascade, attempt to apply multiple classes, or affect element IDs are not supported.</p>
+<h4 id="styles-Unsupportedselectors">Unsupported selectors</h4>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">Rule Syntax</th>
+                <th colspan="1" class="confluenceTh">Description</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>.clazz p</code></td>
+                <td colspan="1" class="confluenceTd">Complex selectors are not supported.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>p.clazz.clazz</code></td>
+                <td colspan="1" class="confluenceTd">Cannot add multiple classes to selected elements.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>#id</code></td>
+                <td colspan="1" class="confluenceTd">Cannot add IDs to elements.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<h4 id="styles-Unsupportedelements">Unsupported elements</h4>
+<p><code>a</code>, <code>embed</code>, <code>hr</code>, <code>img</code>, <code>object</code>, <code>table</code>, <code>tr</code>, <code>ul, span</code> are unsupported blocks for the styles dropdown menu</p>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>For more detail on setting available classes/transformations (configuring the block-styles drop-down) see: <a href="Using-your-own-styles_19760339.html">Using your own styles</a>.</p>
+    </div>
+</div>
+<h2 id="styles-ExampleTransformationBehaviors">Example Transformation Behaviors</h2>
+<p>Element transformations follow the following behaviors. Note that elements are separated into the following types: block, object, and inline.</p>
+<p>Block type elements can be freely transformed into any other type of block element, while object and inline type elements may never be transformed.  </p>
+<p>When a user selects one of these options, selected elements are then evaluated against the styling transformation rules, if applicable. The results of applying a block-style choice to selected HTML content are as follows.</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">Selected Content</th>
+                <th class="confluenceTh">Block-Style Rule Chosen</th>
+                <th class="confluenceTh">Resulting HTML</th>
+                <th colspan="1" class="confluenceTh">Description</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>&lt;p&gt;..&lt;/p&gt;</code></td>
+                <td class="confluenceTd"><code>{ rule : 'p' }</code></td>
+                <td class="confluenceTd"><code>&lt;p&gt;..&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">No change.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>&lt;h1&gt;...&lt;/h1&gt;</code></td>
+                <td class="confluenceTd"><code>{ rule : 'p' }</code></td>
+                <td class="confluenceTd"><code>&lt;p&gt;..&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Heading1 transformed to paragraph.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;td&gt;&lt;a&gt;...&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'p' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;td&gt;&lt;a&gt;...&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform a table cell or link (object type). No change.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;span&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'p' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;span&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><span>Can't transform span (inline type). No change.</span> </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;a&gt;...&lt;/a&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'p' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;a&gt;...&lt;/a&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform anchor (object type). No change.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;..&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'h1.blue' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1 class=&quot;blue&quot;&gt;...&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Paragraph transformed to heading1, blue class applied.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1&gt;...&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'h1.blue' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1 class=&quot;blue&quot;&gt;...&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Blue class applied to existing heading1.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;td&gt;&lt;a&gt;...&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'h1.blue' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;td&gt;&lt;a&gt;...&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform a table cell or link (object type). No change.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;span&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'h1.blue' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1 class=&quot;blue&quot;&gt;&lt;span&gt;...&lt;/span&gt;&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Paragraph transformed to heading1, blue class applied. Can't transform span (inline type). </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;a&gt;...&lt;/a&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'h1.blue' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1 class=&quot;blue&quot;&gt;&lt;a&gt;...&lt;/a&gt;&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Paragraph transformed to heading1, blue class applied. <span>Can't transform anchor (object type). </span> </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;..&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'a.red' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;..&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform paragraph (block type). No change.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1&gt;...&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'a.red' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1&gt;...&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform heading1 (block type). No change.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;td&gt;&lt;a&gt;...&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'a.red' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;td&gt;&lt;a class=&quot;red&quot;&gt;...&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform table cell (object type). Red class applied to existing anchor.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;span&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'a.red' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;span&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform paragraph (block type). Can't transform span (inline type). No change.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;a&gt;...&lt;/a&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : 'a.red' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;a class=&quot;red&quot;&gt;...&lt;/a&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform paragraph (block type). Red class applied to existing anchor.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;..&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : '.green' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;span class=&quot;green&quot;&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform paragraph (block type). New span created. Green class applied to new span.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1&gt;...&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : '.green' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;h1&gt;&lt;span class=&quot;green&quot;&gt;...&lt;/span&gt;&lt;/h1&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform heading1 (block type). New span created. Green class applied to new span.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>&lt;td&gt;&lt;a&gt;...&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td class="confluenceTd"><code>{ rule : '.green' }</code></td>
+                <td class="confluenceTd"><code>&lt;td&gt;&lt;a&gt;&lt;span class=&quot;green&quot;&gt;...&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;</code></td>
+                <td class="confluenceTd">Can't transform table cell and anchor (object type). New span created. Green class applied to new span.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>&lt;p&gt;&lt;span&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td class="confluenceTd"><code>{ rule : '.green' }</code></td>
+                <td class="confluenceTd"><code>&lt;p&gt;&lt;span class=&quot;green&quot;&gt;...&lt;/span&gt;&lt;/p&gt;</code></td>
+                <td class="confluenceTd">Can't transform paragraph (block type). Green class applied to existing span.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;a&gt;...&lt;/a&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd"><code>{ rule : '.green' }</code></td>
+                <td colspan="1" class="confluenceTd"><code>&lt;p&gt;&lt;a&gt;&lt;span class=&quot;green&quot;&gt;...&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</code></td>
+                <td colspan="1" class="confluenceTd">Can't transform paragraph and anchor. New span created. Green class applied to new span.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<h2 id="styles-SeeAlso:">See Also:</h2>
+<ul>
+    <li><a href="stylesheets_19760401.html">stylesheets</a></li>
+</ul>
+<li><a href="documentStyles_19760400.html">documentStyles</a></li>

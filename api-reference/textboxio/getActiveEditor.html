@@ -1,0 +1,34 @@
+---
+layout: default
+title: getActiveEditor()
+---
+
+<p> Retrieve the last active editor (the editor that was last given focus) using <code>getActiveEditor()</code>. </p>
+<h2 id="getActiveEditor()-Example">Example</h2>
+<div>
+    <p> </p>
+    <div class="code panel pdl" style="border-width: 1px;">
+        <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>textboxio.getActiveEditor()</b></div>
+        <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Retrieve the last editor used var activeEditor = textboxio.getActiveEditor();</pre> </div>
+    </div>
+    <h2 id="getActiveEditor()-Returns">Returns</h2>
+    <div class="table-wrap">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="confluenceTd"><code><a href="editor_19760351.html">textboxio.editor</a></code></td>
+                    <td colspan="1" class="confluenceTd">Object</td>
+                    <td class="confluenceTd">
+                        <p>The last active editor instance.</p>
+                        <ul>
+                            <li>If no editor is active: returns the editor last given focus.</li>
+                            <li>If no editors have been focused: returns the first editor created.</li>
+                            <li>If no editor has been created: returns null.</li>
+                            <li>If the active editor is removed: returns null until another editor is given focus.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+---
+layout: default
+title: editor
+---
+
+<p>Textbox.io Editor instances are represented by <code>editor</code>. Instances are created by<code> </code><code><a href="19760394.html">replace()</a>,</code><code> <a href="19760392.html">replaceAll()</a>,</code> <code><a href="19760389.html">inline()</a></code>, and<code> <a href="19760390.html">inlineAll()</a></code>.  You can also get editor instances by calling the <code><a href="19760391.html">get()</a></code> or <a href="19760393.html"><code>getActiveEditor</code>()</a> methods.</p>
+<p>The editor instance allows you to interact with a specific editor's <a href="content_19760376.html">content</a> and <a href="events_19760366.html">events</a>.</p>
+<h2 id="editor-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="content_19760376.html">content</a></code></td>
+                <td colspan="1" class="confluenceTd">Groups methods relating to an editor instance's content.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code><a href="events_19760366.html">events</a></code></td>
+                <td class="confluenceTd">Groups methods relating to an editor instance's event model.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="filters_19760359.html">filters</a></code></td>
+                <td colspan="1" class="confluenceTd">Groups properties relating to an editor instance's content filters.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="macros_19760355.html">macros</a></code></td>
+                <td colspan="1" class="confluenceTd">Groups properties relating to an editor instance's macros.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><a href="mode_19760352.html"><code>mode</code> </a></td>
+                <td colspan="1" class="confluenceTd">
+                    <p>Provides methods to set/get the editor's mode to either <code>code view</code> or <code>design</code> view.
+                        <br /><em>See <a href="HTML-Code-View_19760330.html">HTML Code View</a> for more information.</em></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="editor-Methods">Methods</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="19760386.html">element()</a></code></td>
+                <td colspan="1" class="confluenceTd">Returns the editor container DOM element.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="19760385.html">focus()</a></code></td>
+                <td colspan="1" class="confluenceTd">Focus a Textbox.io editor instance.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre><a href="19760387.html">message()</a></pre></td>
+                <td colspan="1" class="confluenceTd">Display a message banner in the editor UI.</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="19760358.html">restore()</a></code></td>
+                <td colspan="1" class="confluenceTd">Removes this Textbox.io Editor instance from its DOM element.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="editor-Note">Note</h2>
+<p><code><a href="19760391.html">get()</a></code> returns arrays of editor instances. The examples in this section assume a single editor - the first editor instance in the returned array.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Retrieve the first editor instance in the returned array var editors = textboxio.get(&#39;textarea&#39;); var editor = editors[0];</pre> </div>
+</div>

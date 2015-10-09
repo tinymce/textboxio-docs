@@ -1,0 +1,29 @@
+---
+layout: default
+title: Setting and Getting Content
+---
+
+<p> Textbox.io supports several mechanisms of setting and getting content.  This article outlines a number of common methods for working with HTML content using Textbox.io. </p>
+<p>Note that both programmatic (JavaScript) and automatic (HTML + POST) methods for working with content are available. </p>
+<h2 id="SettingandGettingContent-SettingContentwithJavascript">Setting Content with Javascript</h2>
+<p>A developer can explicitly set the content of an <code><a href="editor_19760351.html">editor</a></code>, rather than rely on the automatic behavior of <code><a href="19760394.html">replace()</a></code>. To set the HTML contents of an <code><a href="editor_19760351.html">editor</a></code>, simply pass a string of HTML content to<code> <a href="19760382.html">editor.content.set()</a></code>.
+    <br /> </p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/E47cT/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2 id="SettingandGettingContent-SettingContentAutomaticallywithreplace()">Setting Content Automatically with <code>replace()</code></h2>
+<p>When adding a <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> editor to a page using  <code><a href="19760394.html">replace()</a></code>, the HTML content for any matched element is passed to the newly created <code><a href="editor_19760351.html">editor</a></code> instance. In this way <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> can be used to edit the HTML contents of any specified <code>&lt;textarea&gt; </code>or<code> &lt;div&gt; </code>without the need for a specific <em>setting</em> of the editor's content - the editor simply reads in the contents of the matched element.</p>
+<p> </p>
+<hr />
+<h2 id="SettingandGettingContent-GettingContentwithJavascript">Getting Content with Javascript</h2>
+<p>To get the content of an  <code><a href="editor_19760351.html">editor</a></code> explicitly, a developer can use <code><a href="19760380.html">editor.content.get()</a></code>. This method returns a string representation of the editor's HTML content.
+    <br /> </p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/KGZ9Y/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2 id="SettingandGettingContent-GettingContentAutomaticallywithHTML&lt;form&gt;POST">Getting Content Automatically with HTML <code>&lt;form&gt; </code>POST</h2>
+<p>When <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> is used to <em>replace </em>a  <code>&lt;textarea&gt;</code> element within a  <code>&lt;form&gt;</code>, <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> will mimic the behavior of the original  <code>&lt;textarea&gt;</code> when the form is submitted. This means that the contents of the editor are simply posted along with the other form elements, using the name attribute of the original  <code>&lt;textarea&gt;</code> as the key.
+    <br /> </p>
+<div class="aui-message warning shadowed information-macro">
+    <p class="title">Image Content</p> Icon
+    <div class="message-content">
+        <p>By default Textbox.io saves local images as <a href="http://tools.ietf.org/html/rfc2397" class="external-link" rel="nofollow">Base64 data URIs</a>. This encodes images directly within the HTML of the content rather than separate files. This enable images to be imported from Microsoft Word and images to be available in the document immediately without uploading.</p>
+        <p>See <a href="Handling-Local-Images_19760344.html">Handling Local Images</a> for information on uploading local image content to your application.</p>
+    </div>
+</div>

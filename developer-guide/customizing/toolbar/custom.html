@@ -1,0 +1,66 @@
+---
+layout: default
+title: Adding custom commands
+---
+
+<h1 id="Addingcustomcommands-Creatingcustomtoolbarcommands">Creating custom toolbar commands</h1>
+<p>
+    <br />  <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a>’s toolbar can be customized to suit the needs of your application. Buttons on the toolbar are referred to as <em>commands</em><strong><em>. </em></strong><em>Custom commands</em> can be created at initialization time as part of the editor configuration.</p>
+<div class="aui-message problem shadowed information-macro">
+    <p class="title">Important</p> Icon
+    <div class="message-content">
+        <p>When using custom commands, you’ll need to explicitly define the rest of your toolbar configuration (i.e. stipulate all items to appear). See <a href="Changing-the-toolbar_19760337.html">Changing the toolbar</a> for more information.</p>
+    </div>
+</div>
+<p>A typical custom command can be defined appear as the following: </p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var customCommand = { id : &#39;myCommand&#39;, text : &#39;my custom command&#39;,  icon: &#39;./path/to/my/image.png&#39;, action : function () { alert(&#39;hello world&#39;); // write custom functionality to occur when the button is clicked here. } }</pre> </div>
+</div>
+<p> </p>
+<p>Properties:</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">Property</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th class="confluenceTh">Description</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">id</td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td class="confluenceTd">A unique, user-defined key to identify the custom command. This enables the command to be uniquely identified at runtime</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd">text</td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td class="confluenceTd">The text to display as a tooltip when a user hovers over the command</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">icon</td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">a URL path (relative or absolute) to a 13*13px image for the command's icon.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd">action</td>
+                <td colspan="1" class="confluenceTd">function</td>
+                <td class="confluenceTd">A function defining the action to occur when the user clicks on the button.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<h1 id="Addingcustomcommands-Includingcustomcommandsinyourtoolbar">Including custom commands in your toolbar</h1>
+<p>Including the custom command in your toolbar requires specifying where you'd like it in your toolbar:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var myEditor = textboxio.replace(&#39;#someDiv&#39;, { ui:{ toolbar: { items: [&#39;undo&#39;,&#39;insert&#39;, &#39;style&#39;, &#39;emphasis&#39;, &#39;align&#39;, &#39;listindent&#39;, &#39;format&#39;, &#39;tools&#39;, // other toolbar items { //create a group to house our custom command label: &#39;Custom commands group&#39;,  items: [customCommand] //our newly created command  } ] } } });</pre> </div>
+</div>
+<h1 id="Addingcustomcommands-Basicexample">Basic example </h1>
+<p>This example shows how to create a basic custom item and add it to the toolbar.</p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/cdgx281z/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h1 id="Addingcustomcommands-Accessingtheeditorfromactionfunctions">Accessing the editor from action functions</h1>
+<p>Often when writing action functions for custom commands, you'll want to do something meaningful with the editor content. To do this, use <code><a href="textboxio_19760388.html">textboxio.getActiveEditor()</a> </code>to obtain a reference to the editor where the cursor is currently located.</p>
+<p>See the <a href="API-reference_19760350.html">API reference</a> for more information.</p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/o349ec2d/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2 id="Addingcustomcommands-Example">Example</h2>

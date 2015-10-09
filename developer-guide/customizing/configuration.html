@@ -1,0 +1,80 @@
+---
+layout: default
+title: configuration
+---
+
+<h2 id="configuration-Overview">Overview</h2>
+<p>Textbox.io <code><a href="editor_19760351.html">editor</a></code> instances are configured through a configuration object, passed as a second argument when creating an editor via <code><a class="createlink" href="/pages/createpage.action?spaceKey=tbio&amp;title=replace%28element%29&amp;linkCreation=true&amp;fromPageId=19760396">replace()</a></code>,<code> <a href="19760392.html">replaceAll()</a></code>, <code><a href="19760389.html">inline()</a></code>, or <code><a href="19760390.html">inlineAll()</a></code>. Defining properties of a <code style="line-height: 1.4285715;">configuration</code> object overrides the configuration defaults supplied for any generated instances of <code><a href="editor_19760351.html">editor</a></code>.</p>
+<h2 id="configuration-ConfigurationObjectProperties">Configuration Object Properties</h2>
+<p>Note that all properties are optional. Defining a property overrides the editor default behavior.</p>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="autosubmit_19760415.html">autosubmit</a></code></td>
+                <td colspan="1" class="confluenceTd">Boolean</td>
+                <td colspan="1" class="confluenceTd">Specifies whether textboxio should handle form submission</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">
+                    <p><code><a href="basePath_19760414.html">basePath</a></code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">Specifies the path to the textboxio resources folder</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="css_19760398.html">css</a></code></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd">Editor rendering CSS and styling application</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><a href="codeview_19760397.html"><code>codeview</code> </a></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd">Code view feature</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><pre><a href="images_19760413.html">images</a></pre></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd">Editor image handling &amp; upload</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="paste_19760402.html">paste</a></code></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd">Editor paste behavior</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="spelling_19760412.html">spelling</a></code></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>Editor spell checking service</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code><a href="ui_19760403.html">ui</a></code></td>
+                <td colspan="1" class="confluenceTd">Object</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>Editor UI including toolbars, menus, etc.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="configuration-ExampleConfigurationStructure">Example Configuration Structure</h2>
+<p>The configuration object follows the following structure.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var configStructure = { autosubmit: true, basePath : &#39;&#39;, css : {}, codeview : {}, images : {}, paste : {}, spelling : {}, ui : {} };</pre> </div>
+</div>
+<p> </p>
+<hr />
+<h2 id="configuration-defaultsConfigurationDefaults">Configuration Defaults</h2>
+<p>This following object will replicate the default configuration for all Textbox.io instances. </p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Implicit Configuration Defaults</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var defaultConfig = { autosubmit: true, css : { stylesheets : [&#39;&#39;], styles : [ { rule: &#39;p&#39;, text: &#39;block.p&#39; }, { rule: &#39;h1&#39;, text: &#39;block.h1&#39; }, { rule: &#39;h2&#39;, text: &#39;block.h2&#39; }, { rule: &#39;h3&#39;, text: &#39;block.h3&#39; }, { rule: &#39;h4&#39;, text: &#39;block.h4&#39; }, { rule: &#39;div&#39;, text: &#39;block.div&#39; }, { rule: &#39;pre&#39;, text: &#39;block.pre&#39; } ] }, codeview : { enabled: true, showButton: true }, images : { allowLocal : true }, languages : [&#39;en&#39;, &#39;es&#39;, &#39;fr&#39;, &#39;de&#39;, &#39;pt&#39;, &#39;zh&#39;] ui : { toolbar : { items : [ &#39;undo&#39;, &#39;insert&#39;, &#39;style&#39;, &#39;emphasis&#39;, &#39;align&#39;, &#39;listindent&#39;, &#39;format&#39;, &#39;tools&#39; ] } } };</pre> </div>
+</div>
+<div class="aui-message hint shadowed information-macro">
+    <p class="title">Internationalization</p> Icon
+    <div class="message-content">
+        <p> Note that <code>text</code> properties are pre-configured with values like <code>block.p</code>. These string keys refer to the internationalized string label for that item. Using a pre-configured value means that the text value will be internationalized by <code><a href="locale_19760407.html">locale</a></code>.</p>
+    </div>
+</div>

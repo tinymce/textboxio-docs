@@ -1,0 +1,85 @@
+---
+layout: default
+title: Editor types - Classic vs Inline
+---
+
+<p>Textbox.io is able to edit content in 2 distinct ways - <em>&quot;Classic&quot;</em> mode, where the editor appears in a self-contained box, and <em>&quot;Inline mode&quot; </em>(also known as <em>in-context mode)</em> where the editor literally takes an element and makes it editable. In inline mode, you edit content exactly as it appears within the context of the page it is being hosted upon. </p>
+<p> </p>
+<h2 id="Editortypes-ClassicvsInline-Inlinevsclassicmode-aquickcomparison">Inline vs classic mode - a quick comparison</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">Inline</th>
+                <th class="confluenceTh">Classic</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">
+                    <ul>
+                        <li>Inherits stylesheets from the <em>host page</em> the editor is invoked upon</li>
+                        <li>Provides a 'true' WYSIWYG editing experience within the context of the host page</li>
+                        <li>Doesn't work on mobile (...yet...)</li>
+                        <li>Does not provide a fullscreen editing mode or source code view</li>
+                        <li>Container grows as the content inside grows</li>
+                        <li>Toolbar grows and can be dragged around the page</li>
+                    </ul>
+                </td>
+                <td class="confluenceTd">
+                    <ul>
+                        <li>Is self contained (within an iframe)</li>
+                        <li>Requires injection of outside CSS styles using the configuration API</li>
+                        <li>Works on mobile devices</li>
+                        <li>Editor toolbar is always visible (regardless of whether the editor is focused)</li>
+                        <li>Allows editing in fullscreen mode</li>
+                        <li>Editor container remains a fixed size</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="aui-message warning shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>Inline editing does not currently work on Mobile devices. See: <u>Developing editor experiences optimized for mixed platforms</u></p>
+    </div>
+</div>
+<p> </p>
+<h2 id="Editortypes-ClassicvsInline-Demo-ClassicEditing">Demo - Classic Editing</h2>
+<iframe width="100%" height="500" src="https://jsfiddle.net/textboxio/fj4L5eph/embedded/result,js,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h2 id="Editortypes-ClassicvsInline-Demo-InlineEditing">Demo - Inline Editing</h2>
+<iframe width="100%" height="450" src="https://jsfiddle.net/textboxio/fx8g732t/embedded/result,js,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h2 id="Editortypes-ClassicvsInline-WhichtypeofEditorshouldIchoose?">Which type of Editor should I choose?</h2>
+<p>It really depends on the kinds of problems you're looking to solve through the use of an editor. </p>
+<p><strong>Classic Mode  </strong>is useful for generating content that requires isolation- such as form fields, or email compose fields.</p>
+<p><strong>Inline Mode </strong>is useful for editing content such as real-time WYSIWYG editing of complete web pages </p>
+<h2 id="Editortypes-ClassicvsInline-Inline-specificconfigurationoptions">Inline-specific configuration options</h2>
+<h3 id="Editortypes-ClassicvsInline-Toolbarvisibility">Toolbar visibility</h3>
+<p>The toolbar can be made invisible at initialization via the configuration object. Such functionality is useful when developing visually lightweight &quot;minimal&quot; applications.</p>
+<iframe width="100%" height="500" src="https://jsfiddle.net/textboxio/zo2y0wse/embedded/result,js,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<p> </p>
+<h3 id="Editortypes-ClassicvsInline-Toolbardraggability">Toolbar draggability</h3>
+<p>By default, the user can drag the toolbar away from it's container object as if it were a floating window. This functionality may be disabled.</p>
+<iframe width="100%" height="500" src="https://jsfiddle.net/textboxio/n3et4nex/embedded/result,js,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h3 id="Editortypes-ClassicvsInline-Toolbaroffset">Toolbar offset</h3>
+<p>An offset may be set on the toolbar to provide visual separation between the toolbar and the content being edited. </p>
+<p>Note: the editor assumes a &quot;pinned&quot; behavior when it is attached to the content (i.e. when it has no offset). This gives it special properties (such as attaching it to the top of the viewport) when large blocks of content are scrolled. This functionality is no-longer executed when the toolbar has an offset from the container window.</p>
+<iframe width="100%" height="500" src="https://jsfiddle.net/textboxio/mh7zw72c/embedded/result,js,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p> </p>
+<h2 id="Editortypes-ClassicvsInline-Featuresdisabledforinlineediting">Features disabled for inline editing</h2>
+<p>The following features are disabled when inline editing is used (regardless of whether they are declared in configuration):</p>
+<ul>
+    <li>Source code view</li>
+    <li>Fullscreen editing</li>
+</ul>
+<h2 id="Editortypes-ClassicvsInline-Seealso">See also</h2>
+<ul>
+    <li><a href="API-Basics_19760328.html">API Basics</a> - Learn the basics of using the editor API, such as Getting and setting content in the editor.</li>
+    <li>Toolbar <a href="configuration_19760396.html">configuration</a> object</li>
+    <li><a href="Customizing-the-Editor_19760336.html">Customizing the Editor</a> - Learn how to configure and customize Textbox.io<a href="http://textbox.io/" class="external-link" rel="nofollow"> for your applications.</a></li>
+    <li><a href="http://docs.ephox.com/display/serversidecomponents/Spell+Checking">Spell Checking</a> - Find out more about how to enhance the editing experience with spell checking, image upload and other web services from Ephox.</li>
+</ul>
+<li><a href="API-reference_19760350.html">API reference</a> </li>

@@ -1,0 +1,6 @@
+---
+layout: default
+title:  Browser Specific Issues 
+---
+
+<h2 id="BrowserSpecificIssues-InternetExplorerSpecificTroubleshootingTips">Internet Explorer Specific Troubleshooting Tips</h2> <ul> <li>If the editor is reporting that the service cannot be found and tracing the network traffic reveals that no request is made at all, check that the server is <strong>not</strong> listed in the &quot;Trusted Sites&quot; section of Internet Explorer's security options.  If it is, remove it and try again.</li> </ul> <h2 id="BrowserSpecificIssues-ChromeSpecificTips">Chrome Specific Tips</h2> <ul> </ul> <li>If the server is not running on a standard http or https port (80 or 443) then Chrome will include the port in the origin header that is sent to the server. Other browsers do not do this. This is why when specifying the &quot;allowed-origins&quot; config, you should use both the hostname by itself and the hostname and port in the configuration. See <a href="Spell-Checking_19760451.html">Entering Origins</a> for more details</li>

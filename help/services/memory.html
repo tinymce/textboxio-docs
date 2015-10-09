@@ -1,0 +1,42 @@
+---
+layout: default
+title: Out of Memory Errors
+---
+
+<h2 id="OutofMemoryErrors-TheJavaApplicationServerThrows&quot;OutofMemory&quot;Errors">The Java Application Server Throws <em>&quot;Out of Memory&quot;</em> Errors</h2>
+<p>Even though you may have a large amount of RAM available, the Java Virtual Machine doesn't get to see all of that - by default it is limited to only 256Mb.</p>
+<p>For example, if you are using Tomcat, you can view how much memory is being consumed by apps. To do this you need to have the management console enabled.</p>
+<p>On a vanilla install this is done by editing the file <code>/tomcat/install/directory/conf/tomcat-users.xml</code> adding these lines in:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">&lt;role rolename=&quot;manager-gui&quot; /&gt; &lt;user username=&quot;tomcat&quot; password=&quot;password&quot; roles=&quot;manager-gui&quot;/&gt; </pre> </div>
+</div>
+<p>Then, restart the server and go to a browser and open the default tomcat page <a href="http://localhost:8080/" class="external-link" rel="nofollow">http://localhost:8080</a>. On the top right hand side are three buttons, the first of which should be &quot;Server Status&quot;. Click that link, login with the details you set above and you should be able to see the memory consumption (see the figure below for an example).
+    <br />
+</p>
+<p><img class="confluence-embedded-image" src="/assets/img/20054427.png">
+    <br />
+</p>
+<h3 id="OutofMemoryErrors-Toincreasetheamountofmemory:"><strong>To increase the amount of memory:</strong><br /></h3>
+<p><strong>Tomcat :</strong></p>
+<p>Edit the setenv.sh (Unix) or setenv.bat (Windows) to read as follows:</p>
+<p> </p>
+<div class="aui-message warning shadowed information-macro">
+    <p class="title">windows config</p> Icon
+    <div class="message-content">
+        <p>On Windows, please prefix each line with 'set' and remove the quotes . So the configuration would look like:</p>
+        <p> </p><pre>set CATALINA_OPTS= -Dconfig.file=/config/file/location/application.conf set JAVA_OPTS= -Xms2048m -Xmx2048m -XX:PermSize=64m -XX:MaxPermSize=512m -Dfile.encoding=utf-8 -Djava.awt.headless-true -XX:+UseParallelGC -XX:MaxGCPauseMillis=100</pre> </div>
+</div>
+<p>  </p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">CATALINA_OPTS=&quot; -Dconfig.file=/config/file/location/application.conf JAVA_OPTS=&quot; -Xms2048m -Xmx2048m -XX:PermSize=64m -XX:MaxPermSize=512m -Dfile.encoding=utf-8 -Djava.awt.headless-true -XX:+UseParallelGC -XX:MaxGCPauseMillis=100&quot; </pre> </div>
+</div>
+<p><strong>Jetty :</strong></p>
+<p>Edit the start.ini file to read as follows:
+    <br />
+</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">#=========================================================== # Jetty start.jar arguments # Each line of this file is prepended to the command line # arguments # of a call to: # java -jar start.jar [arg...] #=========================================================== -Xms2048m -Xmx2048m -XX:PermSize=64m -XX:MaxPermSize=512m -Dconfig.file=/config/file/location/application.conf </pre> </div>
+</div>
+<p> </p>
+<p>Restart the service and confirm the settings have been applied like so:</p>
+<p><img class="confluence-embedded-image" src="/assets/img/20054426.png"></p>

@@ -1,0 +1,21 @@
+---
+layout: default
+title: stylesheets
+---
+
+
+<p>Developers can control the CSS stylesheets used to render content in <a href="Editor-types---Classic-vs-Inline_19760333.html">classic editing mode</a> with the <code>stylesheets</code> array. This array should be made up of paths to CSS stylesheets, which are loaded in order from first to last.</p>
+<div class="aui-message warning shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>The value for this attribute is <strong>ignored </strong>in inline editing mode. In this mode editor content is part of the host page DOM and is thus rendered using CSS from the surrounding page.</p>
+    </div>
+</div>
+<h2 id="stylesheets-Example">Example</h2>
+<p>In the example below a configuration is created that specifies 2 custom stylesheets. These sheets are then used to render editor content in <a href="Editor-types---Classic-vs-Inline_19760333.html">classic editing mode</a>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var configCSS = { css : { stylesheets : [ &#39;http://example.com/path/to/styles.css&#39;, &#39;../relative/path/to/sheet.css&#39; ] } };</pre> </div>
+</div>
+<p>The following is a representation of the editor document when the configuration above configuration is used.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">&lt;html&gt; &lt;head&gt; &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://example.com/path/to/styles.css&quot;&gt; &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../relative/path/to/sheet.css&quot;&gt; &lt;/head&gt; &lt;body&gt; [...] &lt;/body&gt; &lt;/html&gt;</pre> </div>
+</div>

@@ -1,0 +1,31 @@
+---
+layout: default
+title: editor.content.isDirty()
+---
+
+<p> Check if an instance's content has been updated or changed since it was set.</p>
+<p>Content state is clean after any of these methods are invoked:</p>
+<ul>
+    <li>textboxio.replace()</li>
+    <li>textboxio.replaceAll()</li>
+    <li>textboxio.inline()</li>
+    <li>textboxio.inlineAll()</li>
+    <li>editor.content.set()</li>
+    <li>editor.content.setDirty(false)</li>
+</ul>
+<p>Content state is considered dirty if:</p>
+<ul>
+    <li>the content is modified</li>
+    <li>editor.content.setDirty(true) is used</li>
+</ul>
+<p>Returns</p>
+<table class="table">
+    <tbody>
+        <tr>
+            <td colspan="1" class="confluenceTd">Boolean</td>
+            <td class="confluenceTd">
+                <p>Returns True if the content has changed since it was last set.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

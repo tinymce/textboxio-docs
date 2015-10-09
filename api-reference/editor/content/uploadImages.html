@@ -1,0 +1,37 @@
+---
+layout: default
+title: editor.content.uploadImages()
+---
+
+<p> Add all Base64 images from an <code><a href="editor_19760351.html">editor</a>'s content</code> to the Textbox.io Services upload queue with <code><a href="19760378.html">editor.content.uploadImages()</a></code>. </p>
+<p>If <code><a href="19760378.html">editor.content.uploadImages()</a></code> is called before an existing image upload has completed, identified Base64 images will be appended to the upload queue. Images that are not Base64 encoded will be ignored. </p>
+<p>Upon completion of the queue,  <code><a href="19760378.html">editor.content.uploadImages()</a></code> triggers a callback function. This callback function is passed a result set containing a list of all images uploaded during since <code><a href="19760378.html">editor.content.uploadImages()</a></code>  was called. Each item in the result set contains a DOM reference to the <code>&lt;img&gt;</code>, and a status (success/failure) for that image upload.</p>
+<ul>
+    <li>A <em>success</em> status means that the <code>&lt;img&gt; </code>should now contain a valid  src attribute to uploaded image. </li>
+    <li>A <em>false </em>status implies that the image has failed to upload. After a failed upload, the image will still be Base64 encoded in the <code><a href="editor_19760351.html">editor</a></code> content. If   <code><a href="19760378.html">editor.content.uploadImages()</a></code> is called again, the editor will pick up the failed image and try again.</li>
+</ul>
+<h2 id="editor.content.uploadImages()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.content.get()</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var callback = function (images) { console.log(&#39;Images have finished uploading.&#39;); console.log(&#39;Images uploaded: &#39;, images); };   // Add all Base64 images from editor content to the upload queue editor.content.uploadImages(callback);</pre> </div>
+</div>
+<h2 id="editor.content.uploadImages()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>callback</code></td>
+                <td colspan="1" class="confluenceTd">Function</td>
+                <td class="confluenceTd">
+                    <p>Receives an array of objects with the upload status and DOM reference of each image that was uploaded.</p>
+                    <p>Objects are in the form of:</p>
+                    <div class="code panel pdl" style="border-width: 1px;">
+                        <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var result = { success: true, element: reference }</pre> </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>No return value.</p>
+<h2 id="editor.content.uploadImages()-Returns">Returns</h2>

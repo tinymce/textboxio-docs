@@ -1,0 +1,71 @@
+---
+layout: default
+title: paste
+---
+
+
+<p>The <code><a href="configuration_19760396.html">configuration</a> </code><code><a href="paste_19760402.html">paste</a></code> property defines options related to <code><a href="editor_19760351.html">editor</a></code> paste behavior.</p>
+<h2 id="paste-ExampleConfiguration">Example Configuration</h2>
+<p>In this example, a simple <code><a href="configuration_19760396.html">configuration</a></code> object is created that overrides the default paste behavior. The simple <code><a href="configuration_19760396.html">configuration</a></code> object is then passed to<code> </code><code><a href="19760394.html">replace()</a></code> to create an <code><a href="editor_19760351.html">editor</a></code>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var configPasteClean = { paste : { style : &#39;clean&#39; // Overrides default: &#39;prompt&#39; for MS Office content } };   var editor = textboxio.replace(&#39;#targetId&#39;, configPasteClean);</pre> </div>
+</div>
+<h2 id="paste-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Property</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th colspan="1" class="confluenceTh">Default</th>
+                <th colspan="1" class="confluenceTh">Values</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code>style</code></td>
+                <td class="confluenceTd">String</td>
+                <td colspan="1" class="confluenceTd">'prompt'</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>'clean', 'retain', 'plain' or 'prompt'</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h3 id="paste-StyleValues">Style Values</h3>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="confluenceTh">Value</th>
+                <th class="confluenceTh">Description</th>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">prompt</td>
+                <td colspan="1" class="confluenceTd">
+                    <p>(Default for importing MS Office content)</p>
+                    <p>A prompt is displayed to the user on paste. The prompt asks the user to either remove or retain inline CSS styling.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd">clean</td>
+                <td class="confluenceTd">
+                    <p>(Default for all other import)</p>
+                    <p> Inline CSS styling is stripped from pasted content.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd">plain</td>
+                <td class="confluenceTd">Only the plain text clipboard content is pasted, if any is available</td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd">retain</td>
+                <td colspan="1" class="confluenceTd">Inline CSS styling is retained in pasted content.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>Inline CSS styling is CSS that is applied directly to HTML elements via the HTML style attribute (<a href="http://www.w3.org/TR/1999/REC-html401-19991224/present/styles.html#h-14.2.2" class="external-link" rel="nofollow">W3C</a>).</p>
+    </div>
+</div>

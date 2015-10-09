@@ -1,0 +1,127 @@
+- title: Developer Guide
+  pages:
+    - title: Getting Started
+    - title: Getting Started Cloud
+    - title: API Basics
+      pages:
+        - title: Creating and Removing
+        - title: Setting Getting  
+        - title: Instances
+        - title: Code View
+    - title: Customizing
+      pages:
+        - title: Configuration
+        - title: Dynamic Content   
+        - title: Filtering
+        - title: Macros 
+        - title: Styles
+        - title: Toolbar
+          pages: 
+            - title: Custom 
+    - title: Checking Spelling
+    - title: Editor Types
+    - title: Customizing
+    - title: Handling Images
+      pages:
+        - title: Asynchronous
+        - title: Node JS 
+        - title: PHP
+    - title: Requirements  
+
+- title: API Reference
+  pages:
+    - title: Configuration
+      pages:
+        - title: autoSubmit
+        - title: css
+          pages:
+            - title: documentStyles
+            - title: styles
+            - title: stylesheets      
+        - title: basePath
+        - title: codeview
+        - title: images
+        - title: paste
+        - title: spelling
+        - title: ui
+          pages: 
+            - title: aria-label
+            - title: fonts
+            - title: languages
+            - title: locale
+            - title: shortcuts            
+            - title: toolbar
+              pages: 
+                - title: Commands 
+    - title: editor
+      pages:
+        - title: content
+          pages:
+            - title: documentElement
+            - title: get
+            - title: getSelectedText
+            - title: insertHtmlAtCursor
+            - title: isDirty
+            - title: set
+            - title: setDirty
+            - title: uploadImages
+        - title: element
+        - title: events
+          pages:
+            - title: dirty
+              pages:
+                - title: addListener
+                - title: removeListener
+            - title: focus
+              pages:
+                - title: addListener
+                - title: removeListener
+            - title: loaded
+              pages:
+                - title: addListener
+                - title: removeListener
+        - title: filters
+          pages:
+            - title: predicate
+              pages:
+                - title: addInput
+                - title: addOutput
+            - title: selector
+              pages:
+                - title: addInput
+                - title: addOutput
+        - title: focus
+        - title: macros
+          pages:
+            - title: addSimpleMacro
+            - title: removeMacro        
+        - title: message
+        - title: mode
+          pages:
+            - title: get
+            - title: set
+        - title: restore
+    - title: textboxio
+      pages:
+        - title: get 
+        - title: getActiveEditor
+        - title: inline 
+        - title: inlineAll
+        - title: replace 
+        - title: replaceAll
+        - title: version 
+
+- title: Help
+  pages:
+    - title: Services
+      pages:
+        - title: Browser Issues
+        - title: Curl
+        - title: Error Messages Origins
+        - title: Investigation Tools
+        - title: Memory
+        - title: Troubleshooting
+
+- title: Accessibility
+
+- title: Release Notes

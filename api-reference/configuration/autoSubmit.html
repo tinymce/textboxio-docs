@@ -1,0 +1,51 @@
+---
+layout: default
+title: autosubmit
+---
+
+
+<p>This option configures whether <code>textboxio</code> will automatically handle form submission for text areas. Its value must be either <code>true</code> or <code>false</code>. </p>
+<p>By default this is set to <code>true</code>.  When set to true <code>textboxio</code> handles form submission, it will place the contents of the editor back into its original textarea before the form submits. This process can be asynchronous as <code>textboxio</code> will upload any images first if required.</p>
+<p>When <code>textboxio</code> is <strong>not</strong> handling form submission (i.e. <code>autosubmit</code> is set to <code>false</code>), the page's form submission will be unaffected. It is up to the integrator to ensure that images in the content are uploaded and the content of the original textarea is updated to match the editor's contents before the form submits.  This can be achieved by using the <a href="19760378.html">content.uploadImages()</a> and <a href="19760380.html">content.get()</a> functions.</p>
+<div class="aui-message problem shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>Some frameworks will replace normal form submissions with AJAX requests. These frameworks may cause problems for <code>textboxio's</code> autosubmit functionality. It is recommended that you disable autosubmit by setting its value to false.</p>
+    </div>
+</div>
+<h2 id="autosubmit-ExampleConfiguration">Example Configuration</h2>
+<p>In this example, a <code><a href="configuration_19760396.html">configuration</a></code> object turns off the automatic form submission handling of <code>textboxio</code>.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var config = { autosubmit: false };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<h2 id="autosubmit-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">
+                    <div class="tablesorter-header-inner">Property</div>
+                </th>
+                <th colspan="1" class="confluenceTh">
+                    <div class="tablesorter-header-inner">Type</div>
+                </th>
+                <th colspan="1" class="confluenceTh">
+                    <div class="tablesorter-header-inner">Description</div>
+                </th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">autosubmit</td>
+                <td class="confluenceTd">Boolean</td>
+                <td colspan="1" class="confluenceTd">
+                    <p><code>True</code> turns on <code>textboxio's</code> automatic form handling, and <code>false</code> turns it off. It will default to <code>true</code> if not specified.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="autosubmit-Seealso">See also</h2>
+<ul>
+    <li><a href="Getting-Started_19760335.html">Getting Started</a></li>
+    <li><a href="19760378.html">editor.content.uploadImages()</a> </li>
+    <li><a href="19760380.html">editor.content.get()</a></li>
+</ul>
+<li><a href="Handling-Asynchronous-Image-Uploads_19760345.html">Handling Asynchronous Image Uploads</a></li>

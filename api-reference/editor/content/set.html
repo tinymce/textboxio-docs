@@ -1,0 +1,41 @@
+---
+layout: default
+title: editor.content.set()
+---
+
+<p> Set the HTML content of an instance's <code>&lt;body&gt;</code> element with <code>editor.content.set()</code>.</p>
+<h2 id="editor.content.set()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.content.set(html)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Set the HTML content of an instance var contentToSet = &quot;&lt;p&gt;Any HTML Content&lt;/p&gt;&quot;; editor.content.set(contentToSet);</pre> </div>
+</div>
+<h2 id="editor.content.set()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>html</code></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td class="confluenceTd">Specify the HTML to which the editor’s contents will be set as a string.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="editor.content.set()-Returns">Returns</h2>
+<p>No return value.</p>
+<p class="title">Injecting Content into JavaScript</p> Icon
+<p>If you are using a server side programming language to inject your content you need to make sure that the result of your code creates valid JavaScript. For example, if you use this in a JSP:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var content = &quot;${myObject.content}&quot;;</pre> </div>
+</div>
+<p>you will create invalid JavaScript if ${myObject.content} contains any double quotes and/or carriage returns and/or line feeds. If ${myObject.content} had a double quote you would end up with this:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var content = &quot;&lt;p&gt;This is content with &quot;quoted content&quot; in the paragraph&lt;/p&gt;&quot;;</pre> </div>
+</div>
+<p>As you can see the double quotes in the content leads to a malformed string. CR/LF characters will create similar issues as the string would stretch over multiple lines. To avoid these issues you should <strong>remove</strong> CR and LF characters and <strong>escape</strong> any other characters that could cause issues for a string. These include:</p>
+<ul>
+    <li>Single quote</li>
+    <li>Double quote
+        <br /> </li>
+    <p>How you escape these characters is specific to the server side language you are using but all popular server side languages provide the ability to escape characters in strings. </p>
+</ul>

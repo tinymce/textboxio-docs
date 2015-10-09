@@ -1,0 +1,54 @@
+---
+layout: default
+title: codeview
+---
+
+
+<p>This option configures the behavior of the code view feature and button. Note that it is possible to disable the code view button, but still trigger the code view feature with <code><a href="19760353.html">editor.mode.set(mode)</a></code>.</p>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>This configuration attribute is <strong>ignored </strong>on mobile devices and inline editing modes. For these scenarios, the code view has been forcibly disabled.</p>
+    </div>
+</div>
+<p> </p>
+<p>Example Configuration</p>
+<p>In this example, a <code><a href="configuration_19760396.html">configuration</a></code> object disables the editor code view button while leaving the feature enabled.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">var config = { codeview : { enabled: true, showButton: false } };   var editor = textboxio.replace(&#39;#targetId&#39;, config);</pre> </div>
+</div>
+<h2 id="codeview-Properties">Properties</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th colspan="1" class="confluenceTh">Property</th>
+                <th colspan="1" class="confluenceTh">Type</th>
+                <th colspan="1" class="confluenceTh">Properties</th>
+            </tr>
+            <tr>
+                <td class="confluenceTd">enabled</td>
+                <td class="confluenceTd">Boolean</td>
+                <td colspan="1" class="confluenceTd">
+                    <p><code>true</code> to enable codeview for the editor instance. <code>false</code> to disable.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="confluenceTd"><code>showButton</code></td>
+                <td colspan="1" class="confluenceTd">Boolean</td>
+                <td colspan="1" class="confluenceTd">
+                    <p><code>true</code> to show the codeview button for the editor instance. <code>false</code> to disable.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="aui-message hint shadowed information-macro">
+    <p class="title">Codeview Default Configuration</p> Icon
+    <div class="message-content">
+        <p>The Codeview feature is enabled by default, the default value for the <code>enabled</code> and <code>showButton</code> properties are <code>true.</code></p>
+        <p>For further information see <a href="configuration_19760396.html#configuration-defaults">Configuration Defaults</a>.</p>
+    </div>
+</div>
+<h2 id="codeview-Seealso">See also</h2>
+<ul> </ul>
+<li><a href="HTML-Code-View_19760330.html">HTML Code View</a></li>

@@ -1,0 +1,27 @@
+---
+layout: default
+title: editor.macros.removeMacro()
+---
+
+<p> Remove a previously added macro by passing its key to <code>editor.macros.removeMacro()</code>.</p>
+<p>Example</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Remove a previously added macro by key editor.macros.removeMacro(&#39;macro_1234567&#39;);</pre> </div>
+</div>
+<h2 id="editor.macros.removeMacro()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>key</code></td>
+                <td colspan="1" class="confluenceTd">String</td>
+                <td class="confluenceTd">
+                    <p>Key string returned when a macro is created via <code><a href="19760356.html">editor.macros.addSimpleMacro()</a></code>.</p>
+                    <p>No error is thrown if the key does not match a previously added macro.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>No return value.</p>
+<h2 id="editor.macros.removeMacro()-Returns">Returns</h2>

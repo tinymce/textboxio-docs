@@ -1,0 +1,15 @@
+---
+layout: default
+title: Handling Asynchronous Image Uploads
+---
+
+<p> Textbox.io automatic image uploads are asynchronous.</p>
+<p>It is therefore possible for users to save their content before all images have completed uploading.  In this situation, no server path to the image resource is available and those images will be stored in the HTML as Base64 data URIs.</p>
+<p>When replacing a textarea inside a form element the editor will automatically delay the standard form submit event if images are uploading. In all other scenarios, this delay must be introduced manually.</p>
+<p>To ensure that all images have been uploaded, developers can use the<code> <a href="19760378.html">editor.content.uploadImages()</a> </code>method to ensure that all image uploads have completed and that the HTML content of the editor has been updated appropriately.  <code>uploadImages() </code>accepts a callback function, triggered when images have finished uploading and the content is ready.</p>
+<p>The example below demonstrates how to use the <code>uploadImages()</code> method in conjunction with the <code><a href="19760391.html">content.get()</a></code> method to ensure that all images have been uploaded <em><strong>before</strong></em> the content is retrieved from the editor.  It could also be used with a form's <code>onsubmit</code> method in a similar way.</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>uploadImages and Content Retrieval Callback</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: jscript; gutter: false" style="font-size:12px;">editor.content.uploadImages(function() { var content = editor.content.get(); console.log(content); });</pre> </div>
+    <p><code><a href="19760378.html">uploadImages()</a> </code>scans the editor content for all Base64 encoded images and queues them for upload. If no images are uploading, the callback is executed immediately.</p>
+</div>

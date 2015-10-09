@@ -1,0 +1,16 @@
+---
+layout: default
+title: Creating dynamic content
+---
+
+<p> The combination of filters and macros in the editor can create a powerful environment for creating dynamic page content in the editor.</p>
+<p>Dynamic content is where a <em>script, templating engine, or process</em> evaluates a variable or declared function contained within a HTML document.</p>
+<p>An example of such a dynamic page fragment might be:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: php; gutter: false" style="font-size:12px;">&lt;html&gt; &lt;body&gt; &lt;p&gt; The date today is: [[date]] &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;</pre> </div>
+</div>
+<p>Where <code style="line-height: 1.4285715;">[[date]]</code> is evaluated at render-time by some outside process, for example.</p>
+<p>Often, it is difficult to portray such dynamic content in a WYSIWYG editing environment, without taking away the dynamic behavior itself.</p>
+<p>Using macros, you can replace content in real-time, whilst preserving original state by wrapping original values in <code>data-</code> attributes.</p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/p8s8vn4f/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>The demo below shows an example where we can show true WYSIWYG output of dynamic functions, such as <code>[[date]]</code>, but use the original function when <code>editor.content.get()</code> is called:</p>

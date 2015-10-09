@@ -1,0 +1,28 @@
+---
+layout: default
+title: Logging
+---
+
+<p>For compartmentalization of logs in your environment or to provide Ephox with more succinct feedback around the behavior of your deployed <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> Server Components (e.g. for support purposes), you may want to write out the <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> logs to a specific file.</p>
+<p>To write the <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> logs to a specific file, you’ll need to perform the following steps:</p>
+<h3 id="Logging-Step1-CreatealoggingconfigurationXMLfile">Step 1 - Create a logging configuration XML file </h3>
+<p>The <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> services use the <a href="http://logback.qos.ch/manual/configuration.html" class="external-link" rel="nofollow">Logback</a> logging format.</p>
+<p>For easy implementation, here is a sample XML configuration with a tokenized value you can populate:</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: xml; gutter: false" style="font-size:12px;">Where {$LOG_LOCATION} is the location and name of the file you would like to write the logs to (e.g. /tmp/textboxio_services.log) </pre> </div>
+</div>
+<p> </p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: xml; gutter: false" style="font-size:12px;">&lt;configuration&gt; &lt;appender name=&quot;STDOUT&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt; &lt;encoder&gt; &lt;pattern&gt;%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n&lt;/pattern&gt; &lt;/encoder&gt; &lt;/appender&gt; &lt;appender name=&quot;FILE&quot; class=&quot;ch.qos.logback.core.FileAppender&quot;&gt; &lt;file&gt;{$LOG_LOCATION}&lt;/file&gt; &lt;encoder&gt; &lt;pattern&gt;%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n&lt;/pattern&gt; &lt;/encoder&gt; &lt;/appender&gt; &lt;!-- This results in all ephox logging going to file. Change/uncomment this part here if spellchecking specific logging is required --&gt; &lt;logger name=&quot;com.ephox&quot; level=&quot;INFO&quot;/&gt; &lt;!-- &lt;logger name=&quot;com.ephox.honey&quot; level=&quot;INFO&quot;/&gt; --&gt; &lt;root level=&quot;INFO&quot;&gt; &lt;appender-ref ref=&quot;FILE&quot; /&gt; &lt;!-- If you want logging to go to the container as well uncomment the following line --&gt; &lt;!-- &lt;appender-ref ref=&quot;STDOUT&quot; /&gt; --&gt; &lt;/root&gt; &lt;/configuration&gt; </pre> </div>
+</div>
+<h3 id="Logging-Step2-Addtheloggingconfigurationtoyourclasspath">Step 2 - Add the logging configuration to your classpath</h3>
+<div>
+    <p>Much like how your <em>application.conf</em> services configuration file is added to the classpath (see Step 3 of the <a href="Spell-Checking_19760451.html">Spell Checking Install Guide</a>), you’ll need to follow a similar pattern to add your logging configuration XML to the classpath.</p>
+    <div>
+        <p> </p>
+        <div class="code panel pdl" style="border-width: 1px;">
+            <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: xml; gutter: false" style="font-size:12px;"> -Dlogback.configurationFile={$LOG_LOCATION}</pre> </div>
+        </div>
+        <p> </p>
+    </div>
+</div>

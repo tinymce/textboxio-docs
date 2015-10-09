@@ -1,0 +1,7 @@
+_site
+.DS_Store
+.bundle
+.jekyll-metadata
+.sass-cache
+*.log
+boxdocs.sublime-workspace

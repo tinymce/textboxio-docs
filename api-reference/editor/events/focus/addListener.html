@@ -1,0 +1,26 @@
+---
+layout: default
+title: editor.events.focus.addListener()
+---
+
+<p> Add a custom event listener to a <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> editor focus event with <code>editor.events.focus.addlistener()</code>.</p>
+<p>You can detect that an editor has received focus by attaching a callback function to the editor’s focus event. </p>
+<h2 id="editor.events.focus.addListener()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.events.loaded.addListener(callback)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">// Add a custom event listener to the editor focus event editor.events.focus.addListener(function() { alert(&#39;Editor got focus.&#39;); }); };</pre> </div>
+</div>
+<h2 id="editor.events.focus.addListener()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>callback</code></td>
+                <td colspan="1" class="confluenceTd">Function</td>
+                <td class="confluenceTd">Function executed when the editor receives focus.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>No return value.</p>
+<h2 id="editor.events.focus.addListener()-Returns">Returns</h2>

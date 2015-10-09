@@ -1,0 +1,38 @@
+---
+layout: default
+title: Getting Started (Cloud Deployment)
+---
+
+<p>Getting started with <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> is super easy via the <a href="https://accounts.textbox.io" class="external-link" rel="nofollow">cloud deployment offering</a>. In this guide you will invoke <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> on a <code>&lt;textarea&gt;</code> as part of a HTML <code>&lt;form&gt;</code>.  When the <code>&lt;form&gt;</code> is submitted, the contents of the <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> editor will be submitted as part of the <code>&lt;form&gt;</code> POST.  </p>
+<p>To complete this guide, you will need access to a web server. This guide assumes a web server is running on port 80 on localhost.</p>
+<h2 id="GettingStarted(CloudDeployment)-Step1:SignupforanAccountwiththeTextbox.ioCloudOffering">Step 1: Signup for an Account with the Textbox.io Cloud Offering</h2>
+<p>You can signup for a free trial of the Textbox.io Cloud at <a href="https://accounts.textbox.io" class="external-link" rel="nofollow">https://accounts.textbox.io</a>.</p>
+<h2 id="GettingStarted(CloudDeployment)-Step2:AddtheDomainsforWhereTextbox.iowillbeDisplayed">Step 2: Add the Domains for Where Textbox.io will be Displayed</h2>
+<p>For wherever you'll want Textbox.io to appear, you'll need to add the domains for these locations to <a href="https://accounts.textbox.io/#domains" class="external-link" rel="nofollow">https://accounts.textbox.io/#domains</a>. The domain <a href="http://localhost" class="external-link" rel="nofollow">http://localhost</a> is enabled by default, allowing you to easier integrate your Textbox.io Cloud instance into your development environments.</p>
+<h2 id="GettingStarted(CloudDeployment)-Step3:AddtheTextbox.ioCloud&lt;script&gt;TagtoaWebPage">Step 3: Add the Textbox.io Cloud &lt;script&gt; Tag to a Web Page</h2>
+<p>Upon signup to the Textbox.io Cloud, <a href="https://accounts.textbox.io/#overview" class="external-link" rel="nofollow">you'll be provided with a &lt;script&gt; tag</a>. You'll need to copy this <code>&lt;script&gt;</code> tag and paste it into the webpage where you will be loading Textbox.io.</p>
+<h2 id="GettingStarted(CloudDeployment)-invoke-textboxioStep4:InvokeTextbox.ioasPartofaWebForm">Step 4: Invoke <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> as Part of a Web Form</h2>
+<p>With the script included, you may then invoke <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> on any element (or elements) in your webpage.</p>
+<p><a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> lets you identify elements to <em>replace</em> via a <a href="http://www.w3.org/TR/css3-selectors/" class="external-link" rel="nofollow">CSS3 selector</a>. To add <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> to a page you pass a selector to <code>textboxio.replace()</code>.</p>
+<p>In this example, you will <em>replace</em> <code>&lt;textarea id=&quot;mytextarea&quot;&gt;&lt;/textarea&gt;</code> with a <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> editor by passing the selector '#mytextarea' to <code>textboxio.replace()</code>.</p>
+<pre class="theme: Confluence; brush: xml; gutter: false" style="font-size:12px;">&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;script src=&quot;http://clouddelivery.textbox.io/1/getEditor?apiKey=CLIENT_API_KEY&quot;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Textbox.io Getting Started Guide&lt;/h1&gt; &lt;form&gt; &lt;textarea id=&quot;mytextarea&quot;&gt;&lt;/textarea&gt; &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt; &lt;/form&gt; &lt;script type=&quot;text/javascript&quot;&gt; var editor = textboxio.replace(&#39;#mytextare`a&#39;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt;</pre>
+<h3 id="GettingStarted(CloudDeployment)-Tryit:">Try it:</h3>
+<iframe width="100%" height="300" src="http://jsfiddle.net/textboxio/49TZa/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>You’ve added <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> to the page - that's all there is to it!</p>
+<p>Next, we'll look at retrieving content as part of a &lt;form&gt; POST.</p>
+<h2 id="GettingStarted(CloudDeployment)-savecontent-textboxioStep5:SavingContentwitha&lt;form&gt;POST">Step 5: Saving Content with a &lt;form&gt; POST</h2>
+<p>When the form is submitted, the <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> editor mimics the behavior of a normal HTML <code>&lt;textarea&gt;</code> during a form POST. No additional configuration is required.</p>
+<p> </p>
+<hr />
+<h2 id="GettingStarted(CloudDeployment)-AutomaticallyConfiguredSpellingandImageUploadSupport">Automatically Configured Spelling and Image Upload Support</h2>
+<p><a href="https://accounts.textbox.io" class="external-link" rel="nofollow">Textbox.io Cloud deployments</a> automatically have spelling support and image upload support configured. As a developer, you don't need to configure <a href="spelling_19760412.html">spelling</a> or <a href="Handling-Local-Images_19760344.html">image upload</a> when running Textbox.io from the cloud.</p>
+<p> </p>
+<hr />
+<h2 id="GettingStarted(CloudDeployment)-What&#39;sNext">What's Next</h2>
+<p>At this point, you've seen how to create <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> instances on a page using <code>textboxio.replace()</code>, and you've seen how to retrieve content from <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> as part of an HTML <code>&lt;form&gt;</code> POST. There's way more under the hood if you're feeling adventurous: read on for more <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> goodness:</p>
+<ul>
+    <li><a href="Editor-types---Classic-vs-Inline_19760333.html">Editor types - Classic vs Inline</a> - Learn about the 2 modes of editing supported by <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a>, and decide which works best for you</li>
+    <li><a href="API-Basics_19760328.html">API Basics</a> - Learn the basics of using the editor API, such as getting and setting content in the editor.</li>
+    <li><a href="Customizing-the-Editor_19760336.html">Customizing the Editor</a> - Learn how to configure and customize <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> for your applications.</li>
+</ul>
+<li><a href="API-reference_19760350.html">API reference</a> </li>

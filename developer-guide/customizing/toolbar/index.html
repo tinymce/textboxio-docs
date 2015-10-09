@@ -1,0 +1,34 @@
+---
+layout: default
+title: Changing the toolbar
+---
+
+<p> The items that appear in the editor toolbar, as well as the order in which they appear, can be customized by the Textbox.io API. Additionally, you can define your own <a href="Adding-custom-commands_19760338.html">custom toolbar commands</a> to extend the functionality of the editor and tailor it to your specific needs.</p>
+<h1 id="Changingthetoolbar-Thestocktoolbarconfiguration">The stock toolbar configuration</h1>
+<p><img class="confluence-embedded-image image-center" src="/assets/img/20054362.png"></p>
+<p style="text-align: center;"><em>Stock editor toolbar</em></p>
+<p style="text-align: left;"> </p>
+<p style="text-align: left;">The editor provides a stock toolbar configuration if one is not explicitly defined. This contains a number of items of core functionality. </p>
+<h1 style="text-align: left;" id="Changingthetoolbar-Contextualtoolbaritems">Contextual toolbar items</h1>
+<p><img class="confluence-embedded-image image-center" src="/assets/img/20054361.png"></p>
+<p style="text-align: center;"><em style="text-align: center;">Stock editor toolbar with contextual items showing</em></p>
+<p style="text-align: left;">The editor will show extra toolbar items depending on the selection context. These can be disabled in the <a href="toolbar_19760404.html">toolbar</a> configuration.</p>
+<h1 id="Changingthetoolbar-Definingthetoolbarconfiguration">Defining the toolbar configuration</h1>
+<p>The items in the toolbar are defined in the editor <a href="Configuration-Object_19760342.html">configuration object.&nbsp;</a></p>
+<p>Out of the box, Textbox.io contains a number of available toolbar (&quot;Command&quot;) items. Each item is referenced by a <a href="Command-Item-IDs_19760406.html">Command Item ID</a>, and each button you see in the editor has its own Command Item ID-  for example 'bold', 'italic', 'underline'.</p>
+<p>Further, there are aliases to groups of functionality in the editor to enable you to quickly add blocks of functionality to the editor. These are outlined in <a href="http://docs.ephox.com/display/tbio/Command+Item+IDs#CommandItemIDs-CommandAliases" rel="nofollow">Command Group Aliases</a>.</p>
+<p> </p>
+<p>The following example shows an editor where the toolbar items have been explicitly defined using <a href="http://docs.ephox.com/display/tbio/Command+Item+IDs#CommandItemIDs-CommandAliases" rel="nofollow">Command Group Aliases</a>:</p>
+<p> </p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/vc1b2skm/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2 id="Changingthetoolbar-Groupingbuttons">Grouping buttons</h2>
+<p>When customizing the editor, it is often useful to organize toolbar command items into groups of functionality.  Groups provide users with a visual separation in the UI and commands within a group move to the More Drawer as group of items when required.</p>
+<p>Visually, toolbar groups appear as a set of items between 2 thin vertical lines:</p>
+<p><img class="confluence-embedded-image image-center" width="800" src="/assets/img/20054363.png"></p>
+<p> </p>
+<p>Groups are defined inline to the toolbar item configuration.</p>
+<p>An example of an editor with 2 groups is shown below:</p>
+<p> </p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/textboxio/mL2qesru/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2 id="Changingthetoolbar-Advancedtoolbarcustomization">Advanced toolbar customization</h2>
+<p>Textbox.io also provides the ability to create your own toolbar commands. Read more about this in the <a href="Adding-custom-commands_19760338.html">Adding custom commands</a> guide.</p>

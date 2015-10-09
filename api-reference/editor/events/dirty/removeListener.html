@@ -1,0 +1,26 @@
+---
+layout: default
+title: editor.events.dirty.removeListener()
+---
+
+<p> Remove a custom event listener on a <a href="http://textbox.io/" class="external-link" rel="nofollow">Textbox.io</a> editor's content dirty event with <code>editor.events.dirty.removeListener()</code>.</p>
+<p>You may remove any custom event listeners by passing the callback function used to specify the event with <code>.addListener()</code> to <code>.removeListener()</code>.</p>
+<h2 id="editor.events.dirty.removeListener()-Example">Example</h2>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>editor.events.loaded.addListener(callback)</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">var notify = function () { alert(&#39;The editor content is now dirty.&#39;); }; // Add a custom event listener to the editor&#39;s content dirty event editor.events.dirty.addListener(notify); // Remove a custom event listener editor.events.dirty.removeListener(notify);</pre> </div>
+</div>
+<h2 id="editor.events.dirty.removeListener()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code>callback</code></td>
+                <td colspan="1" class="confluenceTd">Function</td>
+                <td class="confluenceTd">Function used to specify the custom event listener that should be removed.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>No return value.</p>
+<h2 id="editor.events.dirty.removeListener()-Returns">Returns</h2>

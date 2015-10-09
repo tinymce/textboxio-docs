@@ -1,0 +1,27 @@
+---
+layout: default
+title: dirty
+---
+
+<p> The dirty event is triggered when an editors content is modified or has been explicitly set by <a href="19760377.html">editor.content.setDirty(true)</a>.</p>
+<h2 id="dirty-Methods">Methods</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd"><code><a href="19760368.html">editor.events.dirty.addListener()</a></code></td>
+                <td class="confluenceTd">Binds a function to an editor instance's dirty event.</td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code><a href="19760369.html">editor.events.dirty.removeListener()</a></code></td>
+                <td class="confluenceTd">Removes a function from an editor instance's dirty event.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p> </p>
+<p> </p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Example</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">editor.events.dirty.addListener(function () { // do something console.log(&#39;editor content is now dirty&#39;, editor.element()) });</pre> </div>
+</div>

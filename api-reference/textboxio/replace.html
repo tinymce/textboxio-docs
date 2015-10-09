@@ -1,0 +1,71 @@
+---
+layout: default
+title: replace()
+---
+
+<p> Create editor instances by replacing <code>&lt;textarea&gt;</code> or <code>&lt;div&gt;</code> elements with <code>textboxio.replace()</code>. The initial content of the editor is set to the content/value of the replaced element.</p>
+<p>When Textbox.io replaces a <code>&lt;textarea&gt;</code> element within a <code>&lt;form&gt;</code>, it will update the original <code>&lt;textarea&gt;</code> element when the form is submitted, supplying updated content as part of the <code>&lt;form&gt;</code> POST. </p>
+<div class="aui-message hint shadowed information-macro"> Icon
+    <div class="message-content">
+        <p>When <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> replaces <code>&lt;div&gt;</code> elements, content must be requested from <a href="http://Textbox.io" class="external-link" rel="nofollow">Textbox.io</a> using a JavaScript API, see: <a href="Setting-and-Getting-Content_19760332.html">Setting and Getting Content</a>.</p>
+    </div>
+</div>
+<p>Example</p>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>textboxio.replace(selector, [configuration])</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">&lt;div id=&quot;replaceMe&quot;&gt;Content&lt;/div&gt; ... // Create a Textbox.io editor by searching for a DOM element with id &#39;replaceMe&#39; var simpleEditor = textboxio.replace( &#39;#replaceMe&#39; );</pre> </div>
+</div>
+<div class="code panel pdl" style="border-width: 1px;">
+    <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>textboxio.replace(element, [configuration])</b></div>
+    <div class="codeContent panelContent pdl"> <pre class="theme: Confluence; brush: js; gutter: false" style="font-size:12px;">&lt;div id=&quot;replaceMe&quot;&gt;Content&lt;/div&gt; ... // Create a Textbox.io editor by replacing a specific DOM element var div = document.getElementById(&#39;replaceMe&#39;); var simpleEditor = textboxio.replace( div );</pre> </div>
+</div>
+<h2 id="replace()-Parameters">Parameters</h2>
+<div class="table-wrap">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="confluenceTd">
+                    <p><code>selector</code></p>
+                    <p>or</p>
+                    <p><code>element</code></p>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                    <p>String</p>
+                    <p>or</p>
+                    <p>Element</p>
+                </td>
+                <td class="confluenceTd">
+                    <p>Specify a <a href="http://www.w3.org/TR/css3-selectors/" class="external-link" rel="nofollow">CSS3 selector</a> representing the <code>&lt;div&gt;</code> or <code>&lt;textarea&gt;</code> element you wish Textbox.io to replace for editing.</p>
+                    <p>or</p>
+                    <p>The <code>&lt;div&gt;</code> or <code>&lt;textarea&gt;</code> element you wish Textbox.io to replace for editing.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="confluenceTd"><code><a href="configuration_19760396.html">configuration</a></code> </td>
+                <td colspan="1" class="confluenceTd">Object (optional)</td>
+                <td class="confluenceTd">
+                    <p>An optional group of key-value pairs that specify options/settings for the Textbox.io instances you are invoking.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="aui-message warning shadowed information-macro">
+    <p class="title">Note about selectors</p> Icon
+    <div class="message-content">
+        <p>If the selector matches multiple elements, only the first is replaced as per the rules for <a href="http://www.w3.org/TR/selectors-api/#queryselector" class="external-link" rel="nofollow">querySelector</a>.</p>
+        <p>If it does not match any elements, a JavaScript error will be thrown. If the number of elements that will match is not known, use <code><a href="19760392.html">replaceAll()</a></code> which does not have this restriction.</p>
+    </div>
+</div>
+<h2 id="replace()-Returns">Returns</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="confluenceTd"><code><a href="editor_19760351.html">textboxio.editor</a></code></td>
+            <td colspan="1" class="confluenceTd">Object</td>
+            <td class="confluenceTd">
+                <p>A single instance of the Textbox.io editor.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
