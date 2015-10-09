@@ -1,4 +1,4 @@
-## TinyMCE documentation
+## Textbox.io documentation
 
     $ gem install bundle
     $ bundle install
