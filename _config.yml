@@ -23,4 +23,4 @@ redcarpet:
 
 gems:
   - jekyll-redirect-from
-  - octopress-minify-html
+# - octopress-minify-html
