@@ -21,6 +21,6 @@ redcarpet:
     - no_intra_emphasis
     - tables
 
-gems:
+plugins:
   - jekyll-redirect-from
 # - octopress-minify-html

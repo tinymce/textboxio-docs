@@ -6,6 +6,6 @@
 
 For local development:
 
-    $ jekyll serve
+    $ jekyll serve --incremental
 
 Navigate to http://127.0.0.1:4000/
